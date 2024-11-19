@@ -1,0 +1,76 @@
+{
+  "libros": [
+    {
+      "id": "1",
+      "title": "Dune: Part Two",
+      "genre": "Sci-Fi",
+      "releaseDate": "2024-03-15",
+      "isAvailable": true,
+      "rating": "PG-13",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
+      "budget": 250000000
+    },
+    {
+      "id": "2",
+      "title": "Deadpool 3",
+      "genre": "Action",
+      "releaseDate": "2024-05-03",
+      "isAvailable": true,
+      "rating": "R",
+      "poster": "https://preview.redd.it/ucw50k1s9vkb1.jpg?auto=webp&s=ea0c25b9b6445bfe23e0b09ca71a4506ff5874e3",
+      "budget": 100000000
+    },
+    {
+      "id": "3",
+      "title": "Avatar 3",
+      "genre": "Sci-Fi",
+      "releaseDate": "2024-12-20",
+      "isAvailable": true,
+      "rating": "PG-13",
+      "poster": "https://i.blogs.es/ac7c3a/avatar_fire_and_ash_logo/450_1000.jpeg",
+      "budget": 250000000
+    },
+    {
+      "id": "4",
+      "title": "Inside Out 2",
+      "genre": "Animation",
+      "releaseDate": "2024-06-14",
+      "isAvailable": true,
+      "rating": "PG",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpLRYlcMSuE3YXGHxQYOqXL_abzlOVTOn38w&s",
+      "budget": 200000000
+    },
+    {
+      "id": "5",
+      "title": "Furiosa",
+      "genre": "Action",
+      "releaseDate": "2024-05-24",
+      "isAvailable": true,
+      "rating": "R",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNTcwYWE1NTYtOWNiYy00NzY3LWIwY2MtNjJmZDkxNDNmOWE1XkEyXkFqcGc@._V1_.jpg",
+      "budget": 200000000
+    },
+    {
+      "id": "6",
+      "title": "Kung Fu Panda 4",
+      "genre": "Animation",
+      "releaseDate": "2024-03-08",
+      "isAvailable": true,
+      "rating": "PG",
+      "poster": "https://m.media-amazon.com/images/S/pv-target-images/1b2855d75a12c03f471c8fa132bb2bae77aeaadd4e8fbf76fd879378424133f8.jpg",
+      "budget": 150000000
+    }
+  ],
+  "usuario": [
+    {
+      "id": "1",
+      "name": "Carlos",
+      "genre": "M"
+    },
+    {
+      "id": "2",
+      "name": "Angely",
+      "genre": "F"
+    }
+  ]
+}

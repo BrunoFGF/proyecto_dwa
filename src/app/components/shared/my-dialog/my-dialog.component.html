@@ -1,1 +1,6 @@
-<p>my-dialog works!</p>
+<h2 mat-dialog-title>{{data.titulo}}</h2>
+<mat-dialog-content>{{data.contenido}}</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onAceptar()">Aceptar</button>
+  <button mat-button (click)="onCancelar()">Cancelar</button>
+</mat-dialog-actions>

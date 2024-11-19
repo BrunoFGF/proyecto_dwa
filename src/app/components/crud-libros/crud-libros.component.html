@@ -12,30 +12,56 @@
     <input matInput type="text" placeholder="autor" formControlName="autor"/>
   </mat-form-field>
 
+  <div>
+    <!-- Selección de Área -->
+    <mat-form-field class="formElement">
+      <mat-label>Área</mat-label>
+      <mat-select [(value)]="selectedArea" (selectionChange)="onAreaChange($event.value)">
+        <mat-option *ngFor="let area of areas" [value]="area">{{ area }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div *ngIf="categorias.length > 0">
+    <!-- Selección de Categoría -->
+    <mat-form-field class="formElement">
+      <mat-label>Categoría</mat-label>
+      <mat-select [(value)]="selectedCategoria">
+        <mat-option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
   <mat-form-field class="formElement">
-    <mat-label> Genero:</mat-label>
+    <mat-label> Estado:</mat-label>
     <mat-select formControlName="genre">
       <mat-option value="">Seleccione...</mat-option>
-      <mat-option value="Sci-Fi">Sci-Fi</mat-option>
-      <mat-option value="Action">Action</mat-option>
-      <mat-option value="Adventure">Action</mat-option>
-      <mat-option value="Animation">Animation</mat-option>
+      <mat-option value="Nuevo">Nuevo</mat-option>
+      <mat-option value="Excelente">Excelente</mat-option>
+      <mat-option value="Bueno">Bueno</mat-option>
+      <mat-option value="Aceptable">Aceptable</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field class="formElement">
+    <mat-label>Descripcion: </mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="formElement">
+    <mat-label> Idioma:</mat-label>
+    <input matInput type="text" placeholder="idioma" formControlName="idioma"/>
+  </mat-form-field>
+
+  <mat-form-field class="formElement">
+    <mat-label>Direccion: </mat-label>
+    <textarea matInput></textarea>
   </mat-form-field>
 
   <mat-form-field class="formElement">
     <mat-label> URL de la portada:</mat-label>
     <input matInput type="url" placeholder="url" formControlName="poster"/>
   </mat-form-field>
-
-  <mat-radio-group aria-label="Select an option" class="formElement" formControlName="rating">Rating:
-    <mat-radio-button value="R">R</mat-radio-button>
-    <mat-radio-button value="PG">PG</mat-radio-button>
-    <mat-radio-button value="PG-13">PG-13</mat-radio-button>
-  </mat-radio-group>
 
   <mat-checkbox class="formElement" formControlName="isAvailable">Esta disponible?</mat-checkbox>
 

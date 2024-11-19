@@ -9,17 +9,17 @@ import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioButton } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-crud-libros',
   standalone: true,
   imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
-    MatTableModule, MatRadioButton, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule, ReactiveFormsModule
+    MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
+    MatFormFieldModule,CommonModule,NgIf,NgFor, ReactiveFormsModule
   ],
   templateUrl: './crud-libros.component.html',
   styleUrl: './crud-libros.component.css'
@@ -101,5 +101,21 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
 
 
   onSubmit(){}
+
+  areas: string[] = ['Literatura', 'Ciencia', 'Arte']; // Áreas de ejemplo
+  categorias: string[] = [];
+  selectedArea: string = '';
+  selectedCategoria: string = '';
+
+  onAreaChange(area: string): void {
+    // Cambiar categorías dinámicamente según el área seleccionada
+    const categoriasPorArea: { [key: string]: string[] } = {
+      Literatura: ['Novela', 'Poesía', 'Ensayo'],
+      Ciencia: ['Física', 'Matemáticas', 'Biología'],
+      Arte: ['Pintura', 'Música', 'Fotografía'],
+    };
+    this.categorias = categoriasPorArea[area] || [];
+    this.selectedCategoria = '';
+  }
 
 }

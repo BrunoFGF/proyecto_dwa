@@ -1,4 +1,4 @@
-.libro{
+.libros{
     border: 2px solid #15a4f9;
     padding: 1rem;
     margin: 1rem;
@@ -7,7 +7,7 @@
     border-radius: 2%;
 }
 
-.libro img{
+.libros img{
 
     border-radius: 2%;
     width: 170px;
@@ -25,13 +25,13 @@
     border: 2px solid red;
 }
 
-.libro-card img{
+.libros-card img{
     border-radius: 10%;
     width: 170px;
     height: 250px;
 }
 
-.libro-card{
+.libros-card{
     padding: 5px;
     margin: 5px;
     display: inline-block;

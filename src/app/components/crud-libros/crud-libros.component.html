@@ -1,0 +1,119 @@
+<h3>Crud de Libros</h3>
+<!--Form reactivos-->
+<form [formGroup]="form" class="ocultar" (submit)="onSubmit()">
+
+  <mat-form-field class="formElement">
+    <mat-label> Titulo:</mat-label>
+    <input matInput type="text" placeholder="titulo" formControlName="titulo"/>
+  </mat-form-field>
+
+  <mat-form-field class="formElement">
+    <mat-label> Autor:</mat-label>
+    <input matInput type="text" placeholder="autor" formControlName="autor"/>
+  </mat-form-field>
+
+  <mat-form-field class="formElement">
+    <mat-label> Genero:</mat-label>
+    <mat-select formControlName="genre">
+      <mat-option value="">Seleccione...</mat-option>
+      <mat-option value="Sci-Fi">Sci-Fi</mat-option>
+      <mat-option value="Action">Action</mat-option>
+      <mat-option value="Adventure">Action</mat-option>
+      <mat-option value="Animation">Animation</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="formElement">
+  </mat-form-field>
+
+  <mat-form-field class="formElement">
+    <mat-label> URL de la portada:</mat-label>
+    <input matInput type="url" placeholder="url" formControlName="poster"/>
+  </mat-form-field>
+
+  <mat-radio-group aria-label="Select an option" class="formElement" formControlName="rating">Rating:
+    <mat-radio-button value="R">R</mat-radio-button>
+    <mat-radio-button value="PG">PG</mat-radio-button>
+    <mat-radio-button value="PG-13">PG-13</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-checkbox class="formElement" formControlName="isAvailable">Esta disponible?</mat-checkbox>
+
+  <div class="actions">
+    <button mat-raised-button color ="primary" type="submit">Guardar</button>    
+    <button mat-raised-button color ="primary" type="reset">Cancelar</button>  
+  </div>
+
+</form>
+
+<br>
+
+<!--Busqueda-->
+<div class="search-container">
+
+    <mat-form-field>
+        <mat-label> Buscar:</mat-label>
+        <input matInput type="search" placeholder="area o categoria" #searchInput (keyup)="search(searchInput)"/>
+    </mat-form-field>
+
+    <button mat-raised-button color ="accent" (click)= "search(searchInput)">Buscar</button>
+    
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+     <!-- Name Column -->
+  <ng-container matColumnDef="titulo">
+    <th mat-header-cell *matHeaderCellDef> Titulo </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.titulo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="autor">
+    <th mat-header-cell *matHeaderCellDef> Autor </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.autor}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef> Area </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.area}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoria">
+    <th mat-header-cell *matHeaderCellDef> Categoria </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.categoria}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef> Estado </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.estado}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="idioma">
+    <th mat-header-cell *matHeaderCellDef> Idioma </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.idioma}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ubicacion">
+    <th mat-header-cell *matHeaderCellDef> Ubicacion </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.ubicacion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="disponibilidad">
+    <th mat-header-cell *matHeaderCellDef> Disponible </th>
+    <td mat-cell *matCellDef="let libro"> {{libro.disponibilidad? 'Yes': 'No'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones</th>
+    <td mat-cell *matCellDef="let libro"> 
+    <button mat-raised-button color ="accent" (click)="editar(libro)">Editar</button>    
+    <button mat-raised-button color ="warn" (click)="eliminar(libro)">Eliminar</button>  
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['titulo','autor','area','categoria','estado','idioma','ubicacion','disponibilidad','actions']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['titulo','autor','area','categoria','estado','idioma','ubicacion','disponibilidad','actions'];"></tr>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[4, 7, 20]" aria-label="Select page" showFirstLastButtons>
+</mat-paginator>

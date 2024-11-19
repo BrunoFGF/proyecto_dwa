@@ -28,20 +28,20 @@ export class LibrosjsonService {
   }
 
   ///Agregar
-  addMovie(libros: Libros): Observable<Libros> {
+  addLibro(libros: Libros): Observable<Libros> {
     return this.http.post<Libros>(this.jsonUrl, libros);
   }
 
   ///Editar
 
-  updateMovie(libros: Libros): Observable<Libros> {
+  updateLibro(libros: Libros): Observable<Libros> {
     const urlDeLosLibros = `${this.jsonUrl}/${libros.id}`;
     return this.http.put<Libros>(urlDeLosLibros, libros);
   }
 
   //ELiminar
 
-  deleteMovie(libros: Libros): Observable<void> {
+  deleteLibro(libros: Libros): Observable<void> {
     const urlDeLosLibros = `${this.jsonUrl}/${libros.id}`;
     return this.http.delete<void>(urlDeLosLibros);
   }

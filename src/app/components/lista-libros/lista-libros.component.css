@@ -1,0 +1,42 @@
+.libro{
+    border: 2px solid #15a4f9;
+    padding: 1rem;
+    margin: 1rem;
+    display: inline-block;
+    text-align: center;
+    border-radius: 2%;
+}
+
+.libro img{
+
+    border-radius: 2%;
+    width: 170px;
+    height: 250px;
+
+}
+
+.btnCompra{
+    color: white;
+    border: 1px solid #15a4f9;
+    padding: 10px 15px; /* Adjust these values as needed */
+}
+
+.activa{
+    border: 2px solid red;
+}
+
+.libro-card img{
+    border-radius: 10%;
+    width: 170px;
+    height: 250px;
+}
+
+.libro-card{
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+mat-card-title{
+    color: blue;
+}

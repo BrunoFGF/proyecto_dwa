@@ -11,8 +11,7 @@
       "idioma": "Español",
       "ubicacion": "Guayaquil, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Un libro maravilloso para reflexionar."
+      "disponibilidad": true
     },
     {
       "id": "2",
@@ -25,8 +24,7 @@
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Una obra maestra de la narrativa."
+      "disponibilidad": true
     },
     {
       "id": "3",
@@ -39,8 +37,7 @@
       "idioma": "Español",
       "ubicacion": "Cuenca, Ecuador",
       "imagen": " ",
-      "disponibilidad": false,
-      "reseñas": "Una perspectiva fascinante sobre la humanidad."
+      "disponibilidad": false
     },
     {
       "id": "4",
@@ -53,8 +50,7 @@
       "idioma": "Español",
       "ubicacion": "Loja, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Un clásico inmortal de la literatura universal."
+      "disponibilidad": true
     },
     {
       "id": "5",
@@ -67,8 +63,7 @@
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador",
       "imagen": " ",
-      "disponibilidad": false,
-      "reseñas": "Intrigante y lleno de giros inesperados."
+      "disponibilidad": false
     },
     {
       "id": "6",
@@ -81,8 +76,7 @@
       "idioma": "Español",
       "ubicacion": "Cuenca, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Una aventura mágica y emocionante."
+      "disponibilidad": true
     },
     {
       "id": "7",
@@ -95,8 +89,7 @@
       "idioma": "Español",
       "ubicacion": "Ambato, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Inspirador y educativo."
+      "disponibilidad": true
     },
     {
       "id": "8",
@@ -109,8 +102,7 @@
       "idioma": "Español",
       "ubicacion": "Guayaquil, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Un manual imprescindible para líderes."
+      "disponibilidad": true
     },
     {
       "id": "9",
@@ -123,8 +115,7 @@
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador",
       "imagen": " ",
-      "disponibilidad": false,
-      "reseñas": "Un libro inquietante y visionario."
+      "disponibilidad": false
     },
     {
       "id": "10",
@@ -137,8 +128,7 @@
       "idioma": "Español",
       "ubicacion": "Machala, Ecuador",
       "imagen": " ",
-      "disponibilidad": true,
-      "reseñas": "Profundo y transformador."
+      "disponibilidad": true
     }
   ],
   "usuario": [

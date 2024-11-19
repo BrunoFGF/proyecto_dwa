@@ -5,69 +5,139 @@
   <mat-form-field class="formElement">
     <mat-label> Titulo:</mat-label>
     <input matInput type="text" placeholder="titulo" formControlName="titulo"/>
+  
+    <mat-error>
+      @if (form.get('titulo')?.invalid && (form.get('titulo')?.dirty) || form.get('titulo')?.touched) {
+        @if (form.get('titulo')?.errors?.['requiered']) {
+          Titulo es requerido
+        }
+        @else if (form.get('titulo')?.errors?.['minLength']) {
+          Titulo minimo 3 caracteres
+        } @else if (form.get('titulo')?.errors?.['pattern']) {
+          Titulo solo debe contener letras y numeros
+        }
+      }
+    </mat-error>
+
   </mat-form-field>
 
   <mat-form-field class="formElement">
     <mat-label> Autor:</mat-label>
     <input matInput type="text" placeholder="autor" formControlName="autor"/>
+    <mat-error>
+      @if (form.get('autor')?.invalid && (form.get('autor')?.dirty) || form.get('autor')?.touched) {
+        @if (form.get('autor')?.errors?.['requiered']) {
+          Genero es requerido
+        }
+      }
+    </mat-error>
   </mat-form-field>
 
-  <div>
     <!-- Selección de Área -->
     <mat-form-field class="formElement">
       <mat-label>Área</mat-label>
-      <mat-select [(value)]="selectedArea" (selectionChange)="onAreaChange($event.value)">
+      <mat-select [(value)]="selectedArea" (selectionChange)="onAreaChange($event.value)" formControlName="area">
         <mat-option *ngFor="let area of areas" [value]="area">{{ area }}</mat-option>
       </mat-select>
+      <mat-error>
+        @if (form.get('area')?.invalid && (form.get('area')?.dirty) || form.get('area')?.touched) {
+          @if (form.get('area')?.errors?.['requiered']) {
+            Genero es requerido
+          }
+        }
+      </mat-error>
     </mat-form-field>
-  </div>
+  
   
   <div *ngIf="categorias.length > 0">
     <!-- Selección de Categoría -->
     <mat-form-field class="formElement">
       <mat-label>Categoría</mat-label>
-      <mat-select [(value)]="selectedCategoria">
+      <mat-select [(value)]="selectedCategoria" formControlName="categoria">
         <mat-option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</mat-option>
       </mat-select>
+      <mat-error>
+        @if (form.get('categoria')?.invalid && (form.get('categoria')?.dirty) || form.get('categoria')?.touched) {
+          @if (form.get('categoria')?.errors?.['requiered']) {
+            Categoria es requerido
+          }
+        }
+      </mat-error>
     </mat-form-field>
   </div>
 
   <mat-form-field class="formElement">
     <mat-label> Estado:</mat-label>
-    <mat-select formControlName="genre">
+    <mat-select formControlName="estado">
       <mat-option value="">Seleccione...</mat-option>
       <mat-option value="Nuevo">Nuevo</mat-option>
       <mat-option value="Excelente">Excelente</mat-option>
       <mat-option value="Bueno">Bueno</mat-option>
       <mat-option value="Aceptable">Aceptable</mat-option>
     </mat-select>
+    <mat-error>
+      @if (form.get('estado')?.invalid && (form.get('estado')?.dirty) || form.get('estado')?.touched) {
+        @if (form.get('estado')?.errors?.['requiered']) {
+          Estado es requerido
+        }
+      }
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="formElement">
     <mat-label>Descripcion: </mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="descripcion"></textarea>
+    <mat-error>
+      @if (form.get('descripcion')?.invalid && (form.get('descripcion')?.dirty) || form.get('descripcion')?.touched) {
+        @if (form.get('descripcion')?.errors?.['requiered']) {
+          Descripcion es requerido
+        }
+      }
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="formElement">
     <mat-label> Idioma:</mat-label>
-    <input matInput type="text" placeholder="idioma" formControlName="idioma"/>
+    <mat-select formControlName="idioma">
+      <mat-option value="">Seleccione...</mat-option>
+      <mat-option value="Español">Español</mat-option>
+      <mat-option value="Ingles">Ingles</mat-option>
+      <mat-option value="Chino">Chino</mat-option>
+      <mat-option value="Ruso">Ruso</mat-option>
+      <mat-option value="Ruso">Frances</mat-option>
+      <mat-option value="Ruso">Arabe</mat-option>
+    </mat-select>
+    <mat-error>
+      @if (form.get('idioma')?.invalid && (form.get('idioma')?.dirty) || form.get('idioma')?.touched) {
+        @if (form.get('idioma')?.errors?.['requiered']) {
+          Idioma es requerido
+        }
+      }
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="formElement">
     <mat-label>Direccion: </mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="direccion"></textarea>
+    <mat-error>
+      @if (form.get('direccion')?.invalid && (form.get('direccion')?.dirty) || form.get('direccion')?.touched) {
+        @if (form.get('direccion')?.errors?.['requiered']) {
+          Direccion es requerido
+        }
+      }
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="formElement">
     <mat-label> URL de la portada:</mat-label>
-    <input matInput type="url" placeholder="url" formControlName="poster"/>
+    <input matInput type="url" placeholder="url" formControlName="imagen"/>
   </mat-form-field>
 
-  <mat-checkbox class="formElement" formControlName="isAvailable">Esta disponible?</mat-checkbox>
+  <mat-checkbox class="formElement" formControlName="disponibilidad">Esta disponible?</mat-checkbox>
 
   <div class="actions">
     <button mat-raised-button color ="primary" type="submit">Guardar</button>    
-    <button mat-raised-button color ="primary" type="reset">Cancelar</button>  
+    <button mat-raised-button color ="primary" type="reset" (click)="clearForm()">Cancelar</button>  
   </div>
 
 </form>

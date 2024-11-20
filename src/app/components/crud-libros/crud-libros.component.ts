@@ -41,7 +41,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
 
   //inicializar las variables asociadas a los componentes del formulario
   this.form=this.fb.group({
-    titulo: ["", [Validators.required, Validators.minLength(3), Validators.pattern(/[A-Za-z0-9]+/g)]],
+    titulo: ["", [Validators.required, Validators.pattern(/[A-Za-z0-9]+/g)]],
     autor: ["",[Validators.required]],
     area: ["",[Validators.required]],
     categoria: ["",[Validators.required]],
@@ -75,27 +75,34 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
     }
   }
 
-  editar(libros:Libros):void{
+  editar(libros: Libros): void {
     this.isEditMode = true;
-
-    if(libros && libros.id){
+  
+    if (libros && libros.id) {
       this.currentId = libros.id;
-    }else{
-      console.log("Libro o el id del libro estan undefined")
+    } else {
+      console.log("Libro o el id del libro están undefined");
+      return; // Salir si no hay datos válidos.
     }
-    ///cargamos los datos de la peli en 
-    this.form.setValue({
-      titulo: libros.titulo,
-      autor: libros.autor,
-      area: libros.area,
-      categoria: libros.categoria,
-      estado: libros.estado,
-      descripcion: libros.descripcion ,
-      idioma: libros.idioma,
-      ubicacion: libros.ubicacion,
-      imagen: libros.imagen?libros.imagen:'',
-      disponibilidad: libros.disponibilidad
-    })
+  
+    // Actualizar las categorías según el área del libro
+    this.onAreaChange(libros.area);
+  
+    // Esperar a que las categorías estén cargadas y luego establecer los valores
+    setTimeout(() => {
+      this.form.setValue({
+        titulo: libros.titulo,
+        autor: libros.autor,
+        area: libros.area,
+        categoria: libros.categoria, // Asegúrate de que este campo esté actualizado
+        estado: libros.estado,
+        descripcion: libros.descripcion,
+        idioma: libros.idioma,
+        ubicacion: libros.ubicacion,
+        imagen: libros.imagen ? libros.imagen : '',
+        disponibilidad: libros.disponibilidad
+      });
+    }, 0); // `setTimeout` asegura que las categorías estén listas antes de asignar el valor.
   }
 
   eliminar(libros:Libros):void{
@@ -150,6 +157,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
       this.librosService.updateLibro(newLibro).subscribe((updateLibro)=>{
         alert("El libro fue editado exitosamente");
         this.getLibros();
+        
       });
 
     }else{//agregar
@@ -165,7 +173,24 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
   }
 
   //seleccionar Area y mostrar categoria segun el area.
-  areas: string[] = ['Literatura', 'Ciencia', 'Arte']; // Áreas
+  areas: string[] = [
+    'Literatura',
+    'CienciaFiccion',
+    'Ciencia',
+    'Historia',
+    'Psicologia',
+    'Filosofia',
+    'Infantil_y_Juvenil',
+    'Artes_y_Cultura',
+    'Estrategia_y_Negocios',
+    'Religion',
+    'Educacion',
+    'Tecnicos',
+    'Gastronomia',
+    'Viajes',
+    'Deportes',
+    'Sociedad',
+    'Misterio_y_Suspenso']; // Áreas
   categorias: string[] = [];
   selectedArea: string = '';
   selectedCategoria: string = '';
@@ -173,9 +198,23 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
   onAreaChange(area: string): void {
     // Cambiar categorías dinámicamente según el área seleccionada
     const categoriasPorArea: { [key: string]: string[] } = {
-      Literatura: ['Novela', 'Poesía', 'Ensayo'],
-      Ciencia: ['Física', 'Matemáticas', 'Biología'],
-      Arte: ['Pintura', 'Música', 'Fotografía'],
+      Literatura: ['Novela', 'Poesía', 'Ensayo', 'Teatro', 'Clásico'],
+      CienciaFiccion: ['Distopia', 'Space Opera', 'Fantasia Epica', 'Ucronia', 'Cyberpunk'],
+      Ciencia: ['Divulgacion Cientifica', 'Fisica', 'Biologia', 'Matematicas', 'Astronomia'],
+      Historia: ['Biografia', 'Ensayo Historico', 'Historia Universal', 'Historia De America', 'Cronicas'],
+      Psicologia: ['Psicologia Positiva', 'Desarrollo Personal', 'Coaching', 'Relatos Terapeuticos', 'Espiritualidad'],
+      Filosofia: ['Clasica', 'Moderna', 'Contemporanea', 'Etica', 'Politica'],
+      Infantil_y_Juvenil: ['Cuentos Infantiles', 'Juvenil', 'Fantasia Juvenil', 'Aventuras', 'Educativos'],
+      Artes_y_Cultura: ['Pintura', 'Escultura', 'Musica', 'Fotografia', 'Cine'],
+      Estrategia_y_Negocios: ['Liderazgo', 'Economia', 'Marketing', 'Estrategia Empresarial', 'Innovacion'],
+      Religion: ['Cristianismo', 'Budismo', 'Islam', 'Textos Sagrados', 'Espiritualidad Moderna'],
+      Educacion: ['Metodos De Ensenanza', 'Didactica', 'Psicopedagogia', 'Educacion Infantil', 'Gestion Educativa'],
+      Profesionales: ['Ingenieria', 'Medicina', 'Derecho', 'Arquitectura', 'Tecnologia'],
+      Gastronomia: ['Recetarios', 'Cocina Internacional', 'Cocina Saludable', 'Reposteria', 'Vinos y Bebidas'],
+      Viajes: ['GuiasDeViaje', 'RelatosDeViajeros', 'Aventura', 'Montanismo', 'Navegacion'],
+      Deportes: ['Futbol', 'Aventura Deportiva', 'Historia Del Deporte', 'Tecnicas y Estrategias', 'Ciclismo'],
+      Sociedad: ['Ensayo Politico', 'Sociologia', 'Antropologia', 'Relaciones Internacionales', 'Activismo'],
+      Misterio_y_Suspenso: ['Thriller', 'Policiaco', 'Crimen', 'Suspenso Psicologico', 'Misterio Paranormal'],
     };
     this.categorias = categoriasPorArea[area] || [];
     this.selectedCategoria = '';

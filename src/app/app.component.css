@@ -10,6 +10,8 @@
 
 .encabezado{
     background-color:#1A237E;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     position: -webkit-sticky;
     position: sticky;

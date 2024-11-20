@@ -10,7 +10,7 @@
       "descripcion": "Una fábula filosófica para todas las edades.",
       "idioma": "Español",
       "ubicacion": "Guayaquil, Ecuador",
-      "imagen": " ",
+      "imagen": "https://www.laesferaazul.com/wp-content/uploads/2022/09/Descubrir-el-Principito-scaled.jpg",
       "disponibilidad": true
     },
     {
@@ -23,7 +23,7 @@
       "descripcion": "Crónica de varias generaciones de la familia Buendía en Macondo.",
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador",
-      "imagen": " ",
+      "imagen": "https://www.mrbooks.com/mrbooks/portadas/9786287641587.webp",
       "disponibilidad": true
     },
     {
@@ -36,7 +36,7 @@
       "descripcion": "Un análisis sobre la historia y evolución de la humanidad.",
       "idioma": "Español",
       "ubicacion": "Cuenca, Ecuador",
-      "imagen": " ",
+      "imagen": "https://www.teluria.com.uy/images/virtuemart/product/9788499924212.jpg",
       "disponibilidad": false
     },
     {
@@ -49,7 +49,7 @@
       "descripcion": "La historia del regreso de Odiseo tras la guerra de Troya.",
       "idioma": "Español",
       "ubicacion": "Loja, Ecuador",
-      "imagen": " ",
+      "imagen": "https://www.loqueleo.com/ec/uploads/2019/02/resized/800_la-odisea.jpg",
       "disponibilidad": true
     },
     {
@@ -62,7 +62,7 @@
       "descripcion": "Un misterio lleno de simbolismos y enigmas históricos.",
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador",
-      "imagen": " ",
+      "imagen": "https://intothebooksheart.com/wp-content/uploads/2017/02/918tCwcm4L.jpg",
       "disponibilidad": false
     },
     {
@@ -75,7 +75,7 @@
       "descripcion": "El tercer año de Harry en Hogwarts enfrenta secretos del pasado.",
       "idioma": "Español",
       "ubicacion": "Cuenca, Ecuador",
-      "imagen": " ",
+      "imagen": "https://static.wikia.nocookie.net/esharrypotter/images/8/81/Harry_Potter_y_el_prisionero_de_Azkaban_Portada_Espa%C3%B1ol.PNG/revision/latest/scale-to-width-down/1200?cb=20151020170338",
       "disponibilidad": true
     },
     {
@@ -88,7 +88,7 @@
       "descripcion": "Exploración accesible de los misterios del universo.",
       "idioma": "Español",
       "ubicacion": "Ambato, Ecuador",
-      "imagen": " ",
+      "imagen": "https://m.media-amazon.com/images/I/91QH0SHtdOL._AC_UF1000,1000_QL80_.jpg",
       "disponibilidad": true
     },
     {
@@ -101,7 +101,7 @@
       "descripcion": "Una guía sobre estrategia aplicable en diversos ámbitos.",
       "idioma": "Español",
       "ubicacion": "Guayaquil, Ecuador",
-      "imagen": " ",
+      "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/40/fa/40fa6a6657f79a3752fbf7a8501ccebd.jpg",
       "disponibilidad": true
     },
     {
@@ -114,7 +114,7 @@
       "descripcion": "Una advertencia sobre el poder absoluto en un régimen totalitario.",
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador",
-      "imagen": " ",
+      "imagen": "https://www.libreriaespanola.com/wp-content/uploads/2023/01/05068048.jpg",
       "disponibilidad": false
     },
     {
@@ -127,7 +127,7 @@
       "descripcion": "Reflexiones sobre la vida en un campo de concentración.",
       "idioma": "Español",
       "ubicacion": "Machala, Ecuador",
-      "imagen": " ",
+      "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/75/c0/75c0bd053ec1e0a6671a1d9d13892582.jpg",
       "disponibilidad": true
     }
   ],

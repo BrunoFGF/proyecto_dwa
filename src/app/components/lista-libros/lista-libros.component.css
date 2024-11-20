@@ -67,6 +67,20 @@
     margin-bottom: 10px;
 }
 
+/* Contenido del libro */
+.contenido-libro {
+    flex-grow: 1; /* Expande el contenido para mantener la tarjeta uniforme */
+    font-size: 0.9rem;
+    color: #616161;
+    margin-top: 10px;
+    margin-left:65px;
+}
+
+.acciones-libro {
+    margin-top: auto; /* Empuja el botón hacia el final de la tarjeta */
+    padding-top: 10px;
+}
+
 /* Botón de Intercambiar */
 .btn-intercambiar {
     background-color: #4caf50; /* Verde */
@@ -74,7 +88,6 @@
     font-weight: bold;
     transition: background-color 0.3s ease;
     padding: 10px 20px;
-    margin-top: auto;
 }
 
 .btn-intercambiar:hover {

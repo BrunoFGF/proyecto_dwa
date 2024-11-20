@@ -113,6 +113,12 @@
     width: 100%;
     border-top: 1px solid #dee2e6;
   }
+
+  .footer p{
+
+    color: #1A237E;
+
+  }
   .footer a {
     color: #007bff;
     text-decoration: none;

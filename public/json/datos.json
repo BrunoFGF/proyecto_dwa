@@ -129,6 +129,19 @@
       "ubicacion": "Machala, Ecuador",
       "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/75/c0/75c0bd053ec1e0a6671a1d9d13892582.jpg",
       "disponibilidad": true
+    },
+    {
+      "id": "3e59",
+      "titulo": "Los Venudos",
+      "autor": "Luis aguirre",
+      "area": "Sociedad",
+      "categoria": "Activismo",
+      "estado": "Nuevo",
+      "descripcion": "Es bonitos",
+      "idioma": "Ruso",
+      "ubicacion": "Micasa, Ecuador",
+      "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/96/35/9635d9539ec48156bf576d5301e6e54e.jpg",
+      "disponibilidad": true
     }
   ],
   "usuario": [

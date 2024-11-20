@@ -48,18 +48,14 @@ button[type="reset"] {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 16px 0;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .search-container mat-form-field {
     flex: 1;
 }
 
-/* Table */
-table.mat-elevation-z8 {
-    width: 100%;
-    margin-top: 24px;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -81,34 +77,12 @@ table.mat-elevation-z8 {
 }
 
 /* Busqueda */ 
+table{
 
-table.mat-elevation-z8 {
-    width: 100%; /* Asegura que la tabla ocupe el 100% del ancho del contenedor */
-    margin-top: 16px; /* Espacio encima de la tabla */
-    border-collapse: collapse; /* Colapsar bordes de la tabla */
-    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
+    overflow-x: auto;
+    
 }
 
-.mat-header-cell, .mat-cell {
-    padding: 8px; /* Espaciado interno en las celdas */
-    text-align: center; /* Centrar texto en las celdas */
-}
-
-.mat-header-cell {
-    background-color: #1976d2; /* Color de fondo para las celdas de encabezado */
-    color: white; /* Color del texto en las celdas de encabezado */
-}
-
-/* Estilo para el paginador */
-.mat-paginator {
-    margin-top: 16px; /* Espacio encima del paginador */
-}
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
-    table.mat-elevation-z8 {
-        display: block; /* Cambia a bloque para permitir desplazamiento */
-        overflow-x: auto; /* Permite el desplazamiento horizontal */
-        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    }
+table button{
+    margin: 5px;
 }

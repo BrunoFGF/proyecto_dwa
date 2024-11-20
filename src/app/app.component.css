@@ -1,24 +1,122 @@
-.encabezado{
-    background-color:rgb(176, 176, 222);
-    padding: 20px;
-}
-    
-.encabezado h1{
-    text-align: center;
-}
-
-a{
-
+* {
+    color:azure;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     text-decoration: none;
-    padding: 5px;
-    background-color:rgb(45, 45, 212);
-    color: white;
-    border: 1px solid #999;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.encabezado{
+    background-color:#1A237E;
+    padding: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
+
 
 .active{
-
-    background-color: red;
-    color: black;
-    
+    color: #15a4f9;
 }
+
+.back {
+    padding: 32px 0;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #15a4f9;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  
+  
+  .menu .navbar ul li {
+    position: relative;
+    float: left;
+  }
+  
+  .menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    display: block;
+  }
+  
+  .menu .navbar ul li a:hover {
+    color: #15a4f9;
+  }
+  
+  #menu {
+    display: none;
+  }
+  
+  .menu-icono {
+    width: 25px;
+  }
+  
+  .menu label {
+    cursor: pointer;
+    display: none;
+  }
+  
+  @media (max-width: 991px) {
+    .menu {
+      padding: 20px;
+    }
+  
+    .menu label {
+      display: initial;
+    }
+  
+    .back {
+      padding: 50px 0;
+    }
+  
+    .menu .navbar {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: none;
+      
+    }
+  
+    .menu.navbar ul li {
+      width: 100%;
+    }
+  
+    #menu:checked ~ .navbar {
+      display: initial;
+    }
+  }
+
+  .footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #dee2e6;
+  }
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }

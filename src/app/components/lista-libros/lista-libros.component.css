@@ -1,42 +1,82 @@
-.libros{
-    border: 2px solid #15a4f9;
-    padding: 1rem;
-    margin: 1rem;
-    display: inline-block;
+/* Encabezado de la página */
+.titulo-principal {
     text-align: center;
-    border-radius: 2%;
+    font-size: 1.8rem;
+    color: #3f51b5; /* Color primario */
+    margin: 20px 0;
 }
 
-.libros img{
-
-    border-radius: 2%;
-    width: 170px;
-    height: 250px;
-
+/* Mensaje vacío */
+.mensaje-vacio {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #9e9e9e; /* Color neutro */
+    font-style: italic;
 }
 
-.btnCompra{
-    color: white;
-    border: 1px solid #15a4f9;
-    padding: 10px 15px; /* Adjust these values as needed */
+/* Contenedor de tarjetas */
+.lista-libros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
-.activa{
-    border: 2px solid red;
+/* Tarjetas de libros */
+.libros-card {
+    max-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.libros-card img{
-    border-radius: 10%;
-    width: 170px;
-    height: 250px;
+.libros-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.libros-card{
-    padding: 5px;
-    margin: 5px;
-    display: inline-block;
+/* Estilo centrado para el título, autor y acciones */
+.centrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-mat-card-title{
-    color: blue;
+/* Título del libro */
+.titulo-libro {
+    font-size: 1.4rem;
+    color: #1a237e; /* Azul oscuro */
+    margin-bottom: 10px;
+}
+
+/* Nombre del autor */
+.autor-libro p {
+    font-size: 1rem;
+    color: #616161; /* Gris */
+    margin: 0;
+}
+
+/* Imagen del libro */
+.imagen-libro {
+    object-fit: contain; /* Ajustar imagen sin recortarla */
+    width: 100%;
+    height: 250px; /* Altura fija para mantener proporción */
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Botón de Intercambiar */
+.btn-intercambiar {
+    background-color: #4caf50; /* Verde */
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.btn-intercambiar:hover {
+    background-color: #388e3c; /* Verde más oscuro */
 }

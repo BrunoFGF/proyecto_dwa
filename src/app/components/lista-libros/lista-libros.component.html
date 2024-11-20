@@ -1,44 +1,58 @@
-<h3>{{title}}</h3>
-@if (libros.length===0) {
-    <p>No hay libros para mostrar</p>
-}@else {
+<h3 class="titulo-principal">{{ title }}</h3>
 
-    @for (item of libros; track $index) {
-        <div class = "libros">
+@if (libros.length === 0) {
+    <p class="mensaje-vacio">No hay libros para mostrar</p>
+} @else {
+    <div class="lista-libros">
+        @for (item of libros; track $index) {
             <mat-card appearance="outlined" class="libros-card">
-                <mat-card-header>
-                    <mat-card-title> 
-                        <strong>{{item.titulo |uppercase}}</strong>
+                <!-- Encabezado del libro -->
+                <mat-card-header class="centrado">
+                    <mat-card-title>
+                        <strong class="titulo-libro">{{ item.titulo | uppercase }}</strong>
                     </mat-card-title>
-    
-                    <mat-card-subtitle> 
-                        <p>{{item.autor}}</p>
+                    <mat-card-subtitle class="autor-libro">
+                        <p>{{ item.autor }}</p>
                     </mat-card-subtitle>
                 </mat-card-header>
-    
+
+                <!-- Imagen del libro -->
                 @if (item.imagen) {
-    
-                    <img mat-card-image [src]="item.imagen" [alt]="item.titulo" #imgLibro 
-                    (mouseenter)="activar(imgLibro)" (mouseleave)="desactivar(imgLibro)">
-    
-                }@else {
-    
-                    <img mat-card-image src="images/default.png" [alt]="item.titulo" >
+                    <img 
+                        mat-card-image 
+                        [src]="item.imagen" 
+                        [alt]="item.titulo" 
+                        class="imagen-libro"
+                        #imgLibro 
+                        (mouseenter)="activar(imgLibro)" 
+                        (mouseleave)="desactivar(imgLibro)">
+                } @else {
+                    <img 
+                        mat-card-image 
+                        src="images/default.png" 
+                        [alt]="item.titulo" 
+                        class="imagen-libro">
                 }
-    
+
+                <!-- Detalles del libro -->
                 <mat-card-content>
-                    <p><strong>Area: </strong>{{item.area}}</p>
-                    <p><strong>Categoria: </strong>{{item.categoria}}</p>
-                    <p><strong>Estado: </strong>{{item.estado}}</p>
-                    <p><strong>Idioma: </strong>{{item.idioma}}</p>
-                    <p><strong>Ubicacion: </strong>{{item.ubicacion}}</p>
+                    <p><strong>Área:</strong> {{ item.area }}</p>
+                    <p><strong>Categoría:</strong> {{ item.categoria }}</p>
+                    <p><strong>Estado:</strong> {{ item.estado }}</p>
+                    <p><strong>Idioma:</strong> {{ item.idioma }}</p>
+                    <p><strong>Ubicación:</strong> {{ item.ubicacion }}</p>
                 </mat-card-content>
-                
-                <mat-card-actions>
-                    <button mat-flat-button class="btnIntercambiar"(click)="intercambiar(item)">
-                        <mat-icon>currency_exchange</mat-icon> Intercambiar</button>
+
+                <!-- Acciones del libro -->
+                <mat-card-actions class="centrado">
+                    <button 
+                        mat-flat-button 
+                        class="btn-intercambiar" 
+                        (click)="intercambiar(item)">
+                        <mat-icon>currency_exchange</mat-icon> Intercambiar
+                    </button>
                 </mat-card-actions>
             </mat-card>
-        </div>
-    }
+        }
+    </div>
 }

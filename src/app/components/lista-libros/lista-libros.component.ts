@@ -60,9 +60,6 @@ export class ListaLibrosComponent {
 
     imgLibro.classList.remove("activa")
   }
-
-
-
-
+  
 }
 

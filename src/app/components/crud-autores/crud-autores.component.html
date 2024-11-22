@@ -1,0 +1,158 @@
+<!-- Formulario Reactivo -->
+<form [formGroup]="form" class="ocultar" (submit)="onSubmit()">
+
+    <!-- Campo: Título -->
+     <div class="formElement">
+  
+      <mat-form-field class="formElement">
+        <mat-label>Nombre:</mat-label>
+        <input matInput type="text" formControlName="nombre" />
+        <mat-error>
+          <ng-container *ngIf="form.get('nombre')?.invalid && (form.get('nombre')?.dirty || form.get('nombre')?.touched)">
+            <span *ngIf="form.get('nombre')?.errors?.['required']">Nombre es requerido</span>
+            <span *ngIf="form.get('nombre')?.errors?.['pattern']">Nombre solo debe contener letras y números</span>
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+  
+     </div>
+
+     <div class="formElement">
+    
+        <mat-form-field class="formElement">
+          <mat-label>Nacionalidad:</mat-label>
+          <input matInput type="text"  formControlName="nacionalidad" />
+          <mat-error>
+            <ng-container *ngIf="form.get('nacionalidad')?.invalid && (form.get('nacionalidad')?.dirty || form.get('nacionalidad')?.touched)">
+              <span *ngIf="form.get('nacionalidad')?.errors?.['required']">Nacionalidad es requerido</span>
+              <span *ngIf="form.get('nacionalidad')?.errors?.['pattern']">Nacionalidad solo debe contener letras y números</span>
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+      
+         </div>
+
+     <div class="formElement">
+    
+        <mat-form-field class="formElement">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput type="text"  formControlName="fechanacimiento"/>
+          <mat-error>
+            <ng-container *ngIf="form.get('fechanacimiento')?.invalid && (form.get('fechanacimiento')?.dirty || form.get('fechanacimiento')?.touched)">
+              <span *ngIf="form.get('fechanacimiento')?.errors?.['required']">Fecha de nacimiento es requerido</span>
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+      
+         </div>
+
+         <div class="formElement">
+    
+          <mat-form-field class="formElement">
+            <mat-label>URL del autor:</mat-label>
+            <input matInput type="url"  formControlName="imagen" />
+          </mat-form-field>
+      
+         </div>
+
+         <div class="formElement">
+    
+          <mat-form-field class="formElement">
+            <mat-label>Biografía</mat-label>
+            <input matInput type="text"  formControlName="biografia"/>
+            <mat-error>
+              <ng-container *ngIf="form.get('biografia')?.invalid && (form.get('biografia')?.dirty || form.get('biografia')?.touched)">
+                <span *ngIf="form.get('biografia')?.errors?.['required']">Biografía es requerida</span>
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+        
+           </div>
+
+         <div class="formElement">
+    
+          <mat-form-field class="formElement">
+            <mat-label>Generos principales</mat-label>
+            <input matInput type="text"  formControlName="generosprincipales"/>
+            <mat-error>
+              <ng-container *ngIf="form.get('generosprincipales')?.invalid && (form.get('generosprincipales')?.dirty || form.get('generosprincipales')?.touched)">
+                <span *ngIf="form.get('generosprincipales')?.errors?.['required']">Generos principales del autor es requerido</span>
+              </ng-container>
+            </mat-error>
+          </mat-form-field>
+        
+           </div>
+
+           <div class="formElement">
+
+            <mat-checkbox class="formElement" formControlName="activo">
+              ¿Está activo?
+            </mat-checkbox>
+            
+           </div>
+  
+      <!-- Botones de acción -->
+     <div class="actions">
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+      <button mat-raised-button color="primary" type="reset" (click)="clearForm()">Cancelar</button>
+    </div>
+  
+  </form>
+  
+  <br>
+  
+  <!--Busqueda-->
+  
+  <div class="search-container">
+  
+      <mat-form-field class="search-container">
+          <mat-label> Buscar:</mat-label>
+          <input matInput type="search" placeholder="area o categoria" #searchInput (keyup)="search(searchInput)"/>
+      </mat-form-field>
+  
+      <button mat-raised-button (click)= "search(searchInput)">Buscar</button>
+      
+  </div>
+
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.nombre}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nacionalidad">
+      <th mat-header-cell *matHeaderCellDef> Autor </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.nacionalidad}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="fechanacimiento">
+      <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.fechanacimiento}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="generosprincipales">
+      <th mat-header-cell *matHeaderCellDef> Categoria </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.generosprincipales}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="activo">
+      <th mat-header-cell *matHeaderCellDef> Disponible </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.activo? 'Yes': 'No'}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones</th>
+      <td mat-cell *matCellDef="let autor"> 
+      <button mat-raised-button (click)="editar(autor)">Editar</button>    
+      <button mat-raised-button color="red" (click)="eliminar(autor)">Eliminar</button>  
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['nombre','nacionalidad','fechanacimiento','generosprincipales','activo','actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['nombre','nacionalidad','fechanacimiento','generosprincipales','activo','actions'];"></tr>
+  
+  </table>
+  
+  <mat-paginator [pageSizeOptions]="[4, 7, 20]" aria-label="Select page" showFirstLastButtons>
+  </mat-paginator>

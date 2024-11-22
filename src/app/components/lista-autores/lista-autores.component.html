@@ -1,0 +1,41 @@
+<h3 class="texto-principal">{{ title }}</h3>
+
+@if (autores.length === 0) {
+<p class="vacio">No hay libros para mostrar</p>
+} @else {
+<div class="lista-autores">
+  @for (item of autores; track $index) {
+  <mat-card appearance="outlined" class="autores-card">
+    <!-- Encabezado del libro -->
+    <mat-card-header class="centrar">
+      <mat-card-title>
+        <strong class="titulo-autor">{{ item.nombre | uppercase }}</strong>
+      </mat-card-title>
+      <mat-card-subtitle class="autor-libro">
+        <p>{{item.nacionalidad}}</p>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- Imagen del libro -->
+    @if (item.imagen) {
+        <img mat-card-image [src]="item.imagen" [alt]="item.nombre" class="imagen-autor" #imgLibro (mouseenter)="activar(imgLibro)" (mouseleave)="desactivar(imgLibro)"/>
+     } @else {
+        <img mat-card-image src="images/default.png" [alt]="item.nombre" class="imagen-autor"/>
+     }
+
+     <!-- Detalles del libro -->
+    <mat-card-content class="contenido-autor">
+        <p><strong>Fecha de nacimiento:</strong> {{ item.fechanacimiento | date:"dd-MMMM-yyyy" }}</p>
+        <p><strong>Generos:</strong> {{ item.generosprincipales }}</p>
+      </mat-card-content>
+    
+      <mat-card-actions class="centrar acciones-autor">
+        <button mat-flat-button class="btn-biografia" (click)="biografia(item)">
+          <mat-icon>currency_exchange</mat-icon> Biografia
+        </button>
+      </mat-card-actions>
+
+  </mat-card>
+  }
+</div>
+}

@@ -14,7 +14,6 @@
       "id": "1"
     },
     {
-      "id": "2",
       "titulo": "Cien años de soledad",
       "autor": "Gabriel García Márquez",
       "area": "Literatura",
@@ -22,9 +21,10 @@
       "estado": "Usado - Aceptable",
       "descripcion": "Crónica de varias generaciones de la familia Buendía en Macondo.",
       "idioma": "Español",
-      "ubicacion": "Quito, Ecuador",
+      "ubicacion": "Quito, Ecuador, Guayaquil",
       "imagen": "https://www.mrbooks.com/mrbooks/portadas/9786287641587.webp",
-      "disponibilidad": true
+      "disponibilidad": true,
+      "id": "2"
     },
     {
       "id": "3",
@@ -105,19 +105,6 @@
       "disponibilidad": true
     },
     {
-      "id": "9",
-      "titulo": "1984",
-      "autor": "George Orwell",
-      "area": "CienciaFiccion",
-      "categoria": "Distopia",
-      "estado": "Usado - Bueno",
-      "descripcion": "Una advertencia sobre el poder absoluto en un régimen totalitario.",
-      "idioma": "Español",
-      "ubicacion": "Quito, Ecuador",
-      "imagen": "https://www.libreriaespanola.com/wp-content/uploads/2023/01/05068048.jpg",
-      "disponibilidad": false
-    },
-    {
       "id": "10",
       "titulo": "El hombre en busca de sentido",
       "autor": "Viktor Frankl",
@@ -154,6 +141,38 @@
       "id": "2",
       "name": "Angely",
       "genre": "F"
+    }
+  ],
+  "autor": [
+    {
+      "nombre": "Gabriel García Márquez de la gonda",
+      "nacionalidad": "Colombiana y Peruana",
+      "fechanacimiento": "1927-03-06",
+      "imagen": "https://www.biografiasyvidas.com/biografia/g/fotos/garcia_marquez_gabriel.jpg",
+      "biografia": "Gabriel García Márquez fue un escritor, novelista, cuentista, guionista y periodista colombiano, conocido por su obra maestra 'Cien años de soledad'. Fue galardonado con el Premio Nobel de Literatura en 1982.",
+      "generosprincipales": "Realismo mágico, Novela, cuento",
+      "activo": true,
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "nombre": "Frida Kahlo",
+      "nacionalidad": "Mexicana",
+      "fechanacimiento": "1907-07-06",
+      "imagen": "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/0485/production/_102075110_frida-kahlo-in-blue-satin-b.gif.webp",
+      "biografia": "Frida Kahlo fue una pintora mexicana, conocida por sus autorretratos que exploran la identidad, el sufrimiento y la condición femenina. Su vida estuvo marcada por el dolor físico y una constante lucha contra enfermedades.",
+      "generosprincipales": "Autobiografía, Arte, Identidad cultural",
+      "activo": true
+    },
+    {
+      "nombre": "jose jose",
+      "nacionalidad": "ecuatoriana",
+      "fechanacimiento": "1999-05-21",
+      "imagen": "",
+      "biografia": "gran escritor",
+      "generosprincipales": "Fantasia, Accion Romance",
+      "activo": true,
+      "id": "6e79"
     }
   ]
 }

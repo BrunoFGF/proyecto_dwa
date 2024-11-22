@@ -1,4 +1,5 @@
-<div class="encabezado">
+<router-outlet>
+  <div class="encabezado">
     <div class="back">
       <div class="menu container">
         <a routerLink="/lista-libros" class="logo">BookChange</a>
@@ -8,17 +9,28 @@
         </label>
         <nav class="navbar">
           <ul>
-            <li><a routerLink="/lista-libros" routerLinkActive="active">Lista de libros</a></li>
-            <li><a routerLink="/crud-libros" routerLinkActive="active">Crud de libros</a></li>
-            <li><a routerLink="/lista-autores" routerLinkActive="active">Lista de autores</a></li>
-            <li><a routerLink="/crud-autores" routerLinkActive="active">Crud de autores</a></li>
+            <!-- Sección de Libros -->
+            <li class="dropdown">
+              <span class="nav-header">Libros</span>
+              <ul class="dropdown-content">
+                <li><a routerLink="/lista-libros" routerLinkActive="active">Lista de libros</a></li>
+                <li><a routerLink="/crud-libros" routerLinkActive="active">Crud de libros</a></li>
+              </ul>
+            </li>
+            <!-- Sección de Autores -->
+            <li class="dropdown">
+              <span class="nav-header">Autores</span>
+              <ul class="dropdown-content">
+                <li><a routerLink="/lista-autores" routerLinkActive="active">Lista de autores</a></li>
+                <li><a routerLink="/crud-autores" routerLinkActive="active">Crud de autores</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
       </div>
     </div>
-</div >
-
-<router-outlet />
+  </div>
+</router-outlet>
 
 <footer class="footer">
   <div class="container">

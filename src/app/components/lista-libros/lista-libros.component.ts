@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ListaLibrosComponent {
 
-  title= "Lista de peliculas";
+  title= "Lista de libros";
   libros: Libros[]=[];
 
   constructor(private miServicio:LibrosjsonService, private mydialog:MatDialog){}

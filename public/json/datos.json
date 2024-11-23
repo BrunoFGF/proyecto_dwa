@@ -131,17 +131,17 @@
       "disponibilidad": true
     },
     {
-      "id": "8076",
-      "titulo": "Prueba",
-      "autor": "Luis Aguirre",
-      "area": "CienciaFiccion",
-      "categoria": "Cyberpunk",
-      "estado": "Nuevo",
-      "descripcion": "PRUEBA!",
-      "idioma": "Francés",
-      "ubicacion": "Guayaquil, Ecuador",
-      "imagen": null,
-      "disponibilidad": null
+      "titulo": "Cien años de soledad",
+      "autor": "Gabriel García Márquez",
+      "area": "Literatura",
+      "categoria": "Novela",
+      "estado": "Usado - Aceptable",
+      "descripcion": "Historia de la familia Buendía",
+      "idioma": "Español",
+      "ubicacion": "Loja, Ecuador",
+      "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/38/12/3812f54c9c10992f538ead2c95d775ed.jpg",
+      "disponibilidad": true,
+      "id": "ffc1"
     }
   ],
   "usuario": [

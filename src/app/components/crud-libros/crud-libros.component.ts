@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { LibrosjsonService } from '../../services/librosjson.service';
 import { Libros } from '../../models/Libros';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,13 +13,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { AutoresjsonService } from '../../services/autoresjson.service';
+import { Autor } from '../../models/Autor';
 
 @Component({
   selector: 'app-crud-libros',
   standalone: true,
   imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
     MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule,CommonModule,NgIf,NgFor, ReactiveFormsModule
+    MatFormFieldModule,CommonModule,NgIf,NgFor,FormsModule, ReactiveFormsModule
   ],
   templateUrl: './crud-libros.component.html',
   styleUrl: './crud-libros.component.css'
@@ -29,8 +31,11 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
   form!: FormGroup;
   isEditMode:boolean=false;
   currentId!: number;
+  selectedAutor: string | null = null;
+
   ///dataSource (fuente de datos) para mi tabla
   dataSource = new MatTableDataSource<Libros>();
+  dataSourceAutor = new MatTableDataSource<Autor>();
   @ViewChild(MatPaginator)paginator!:MatPaginator;
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -38,6 +43,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.getLibros();
+    this.getAutores();
 
   //inicializar las variables asociadas a los componentes del formulario
   this.form=this.fb.group({
@@ -54,7 +60,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
   });
   }
 
-  constructor(private librosService:LibrosjsonService, private fb: FormBuilder,
+  constructor(private librosService:LibrosjsonService, private AutoresService:AutoresjsonService, private fb: FormBuilder,
     private mydialog:MatDialog
   ){}
 
@@ -63,6 +69,13 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
       this.dataSource.data = datos;
     });
   }
+
+  getAutores():void{
+    this.AutoresService.getAutores().subscribe((datos:Autor[])=> {
+      this.dataSourceAutor.data = datos;
+    });
+  }
+
 
   search(searchInput: HTMLInputElement){
     if(searchInput.value){///representa lo que el usuario escribio en la caja de texto

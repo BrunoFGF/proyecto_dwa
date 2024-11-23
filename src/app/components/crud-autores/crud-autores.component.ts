@@ -8,7 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   standalone: true,
   imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
     MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule,CommonModule,NgIf,NgFor, ReactiveFormsModule, MatDatepickerModule],
+    MatFormFieldModule,CommonModule,NgIf, ReactiveFormsModule, MatDatepickerModule],
   templateUrl: './crud-autores.component.html',
   styleUrl: './crud-autores.component.css'
 })

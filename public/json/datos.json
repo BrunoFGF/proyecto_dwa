@@ -2,7 +2,7 @@
   "libros": [
     {
       "titulo": "El Principito",
-      "autor": "Antoine de Saint-Exupery",
+      "autor": "Antoine de Saint-Exupéry",
       "area": "Infantil_y_Juvenil",
       "categoria": "Cuentos Infantiles",
       "estado": "Usado - Bueno",
@@ -14,6 +14,7 @@
       "id": "1"
     },
     {
+      "id": "2",
       "titulo": "Cien años de soledad",
       "autor": "Gabriel García Márquez",
       "area": "Literatura",
@@ -23,11 +24,9 @@
       "idioma": "Español",
       "ubicacion": "Quito, Ecuador, Guayaquil",
       "imagen": "https://www.mrbooks.com/mrbooks/portadas/9786287641587.webp",
-      "disponibilidad": true,
-      "id": "2"
+      "disponibilidad": true
     },
     {
-      "id": "3",
       "titulo": "Sapiens: De animales a dioses",
       "autor": "Yuval Noah Harari",
       "area": "Historia",
@@ -37,7 +36,8 @@
       "idioma": "Español",
       "ubicacion": "Cuenca, Ecuador",
       "imagen": "https://www.teluria.com.uy/images/virtuemart/product/9788499924212.jpg",
-      "disponibilidad": false
+      "disponibilidad": true,
+      "id": "3"
     },
     {
       "id": "4",
@@ -66,6 +66,7 @@
       "disponibilidad": false
     },
     {
+      "id": "6",
       "titulo": "Harry Potter y el prisionero de Azkaban",
       "autor": "J.K. Rowling",
       "area": "Infantil_y_Juvenil",
@@ -75,8 +76,7 @@
       "idioma": "Ingles",
       "ubicacion": "Cuenca, Ecuador",
       "imagen": "https://http2.mlstatic.com/D_NQ_NP_830384-MLA43284461240_082020-O.webp",
-      "disponibilidad": true,
-      "id": "6"
+      "disponibilidad": true
     },
     {
       "id": "7",
@@ -105,6 +105,19 @@
       "disponibilidad": true
     },
     {
+      "titulo": "El Libro de Bill",
+      "autor": "Luis Aguirre",
+      "area": "Misterio_y_Suspenso",
+      "categoria": "Misterio Paranormal",
+      "estado": "Nuevo",
+      "descripcion": "Es bonito",
+      "idioma": "Ruso",
+      "ubicacion": "Micasa, Ecuador",
+      "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/96/35/9635d9539ec48156bf576d5301e6e54e.jpg",
+      "disponibilidad": true,
+      "id": "9"
+    },
+    {
       "id": "10",
       "titulo": "El hombre en busca de sentido",
       "autor": "Viktor Frankl",
@@ -118,17 +131,17 @@
       "disponibilidad": true
     },
     {
-      "titulo": "El Libro de Bill",
-      "autor": "Luis aguirre",
-      "area": "Misterio_y_Suspenso",
-      "categoria": "Misterio Paranormal",
+      "id": "8076",
+      "titulo": "Prueba",
+      "autor": "Luis Aguirre",
+      "area": "CienciaFiccion",
+      "categoria": "Cyberpunk",
       "estado": "Nuevo",
-      "descripcion": "Es bonito",
-      "idioma": "Ruso",
-      "ubicacion": "Micasa, Ecuador",
-      "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/96/35/9635d9539ec48156bf576d5301e6e54e.jpg",
-      "disponibilidad": true,
-      "id": "3e59"
+      "descripcion": "PRUEBA!",
+      "idioma": "Francés",
+      "ubicacion": "Guayaquil, Ecuador",
+      "imagen": null,
+      "disponibilidad": null
     }
   ],
   "usuario": [
@@ -145,34 +158,124 @@
   ],
   "autor": [
     {
-      "nombre": "Gabriel García Márquez de la gonda",
-      "nacionalidad": "Colombiana y Peruana",
-      "fechanacimiento": "1927-03-06",
-      "imagen": "https://www.biografiasyvidas.com/biografia/g/fotos/garcia_marquez_gabriel.jpg",
-      "biografia": "Gabriel García Márquez fue un escritor, novelista, cuentista, guionista y periodista colombiano, conocido por su obra maestra 'Cien años de soledad'. Fue galardonado con el Premio Nobel de Literatura en 1982.",
-      "generosprincipales": "Realismo mágico, Novela, cuento",
-      "activo": true,
+      "nombre": "Antoine de Saint-Exupéry",
+      "nacionalidad": "Francés",
+      "fechanacimiento": "1900-06-29",
+      "imagen": "https://www.biografiasyvidas.com/biografia/s/fotos/saint_exupery.jpg",
+      "biografia": "Escritor y aviador francés, conocido por su obra más famosa, 'El Principito', que es una fábula filosófica que ha tocado los corazones de lectores de todas las edades.",
+      "generosprincipales": "Literatura infantil, Fábula",
+      "activo": false,
       "id": "1"
     },
     {
-      "id": "2",
+      "nombre": "Gabriel García Márquez",
+      "nacionalidad": "Colombiana y Peruana",
+      "fechanacimiento": "1927-03-06",
+      "imagen": "https://www.biografiasyvidas.com/biografia/g/fotos/garcia_marquez_gabriel.jpg",
+      "biografia": "Escritor, novelista, cuentista, guionista y periodista colombiano, conocido por su obra maestra 'Cien años de soledad'. Fue galardonado con el Premio Nobel de Literatura en 1982.",
+      "generosprincipales": "Realismo mágico, Novela, Cuento",
+      "activo": false,
+      "id": "2"
+    },
+    {
+      "nombre": "Yuval Noah Harari",
+      "nacionalidad": "Israelí",
+      "fechanacimiento": "1976-02-24",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/58/MKr364751_Yuval_Noah_Harari_%28Frankfurter_Buchmesse_2024%29.jpg",
+      "biografia": "Historiador y profesor en la Universidad Hebrea de Jerusalén, conocido por sus libros 'Sapiens: De animales a dioses', que exploran la historia y evolución de la humanidad.",
+      "generosprincipales": "Historia, Ensayo",
+      "activo": true,
+      "id": "3"
+    },
+    {
+      "nombre": "Homero",
+      "nacionalidad": "Griego (antiguo)",
+      "fechanacimiento": "c. 8 a.C.",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Homer_British_Museum.jpg/200px-Homer_British_Museum.jpg",
+      "biografia": "Poeta épico de la antigua Grecia, tradicionalmente considerado el autor de 'La Ilíada' y 'La Odisea', dos de las obras más importantes de la literatura occidental.",
+      "generosprincipales": "Épica, Poesía",
+      "activo": false,
+      "id": "4"
+    },
+    {
+      "nombre": "Dan Brown",
+      "nacionalidad": "Estadounidense",
+      "fechanacimiento": "1964-06-22",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Dan_Brown_bookjacket_cropped.jpg",
+      "biografia": "Autor de novelas de misterio y thriller, conocido por 'El Código Da Vinci', que combina historia, arte y religión en una trama intrigante.",
+      "generosprincipales": "Misterio, Thriller",
+      "activo": true,
+      "id": "5"
+    },
+    {
+      "nombre": "J.K. Rowling",
+      "nacionalidad": "Británica",
+      "fechanacimiento": "1965-07-31",
+      "imagen": "https://images-na.ssl-images-amazon.com/images/S/amzn-author-media-prod/8cigckin175jtpsk3gs361r4ss.jpg",
+      "biografia": "Escritora británica, famosa por la serie de libros de 'Harry Potter', que ha capturado la imaginación de millones de lectores en todo el mundo.",
+      "generosprincipales": "Fantasia, Literatura juvenil",
+      "activo": true,
+      "id": "6"
+    },
+    {
+      "nombre": "Stephen Hawking",
+      "nacionalidad": "Británico",
+      "fechanacimiento": "1942-01-08",
+      "imagen": "https://s.rfi.fr/media/display/69e8bcce-1701-11ea-90d6-005056bf7c53/w:1280/p:1x1/stephen_hawking_0.jpg",
+      "biografia": "Físico teórico y cosmólogo, conocido por su trabajo en la física de los agujeros negros y su libro 'Breve historia del tiempo', que hace accesibles conceptos complejos del universo.",
+      "generosprincipales": "Ciencia, Divulgación científica",
+      "activo": false,
+      "id": "7"
+    },
+    {
+      "nombre": "Sun Tzu",
+      "nacionalidad": "Chino (antiguo)",
+      "fechanacimiento": "c. 5 a.C.",
+      "imagen": "https://www.politicaexterior.com/wp-content/uploads/sun-tzu-cke-copia-1-1024x744.jpg",
+      "biografia": "Estratega militar y filósofo chino, conocido por su obra 'El arte de la guerra', que ha influido en la estrategia militar y en el liderazgo en diversas áreas.",
+      "generosprincipales": "Estrategia, Filosofía",
+      "activo": false,
+      "id": "8"
+    },
+    {
+      "nombre": "Viktor Frankl",
+      "nacionalidad": "Austríaco",
+      "fechanacimiento": "1905-03-26",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Viktor_Frankl2.jpg",
+      "biografia": "Psiquiatra y sobreviviente del Holocausto, conocido por su libro 'El hombre en busca de sentido', donde explora la búsqueda de significado en la vida, incluso en las circunstancias más difíciles.",
+      "generosprincipales": "Psicología, Filosofía",
+      "activo": false,
+      "id": "9"
+    },
+    {
+      "nombre": "Luis Aguirre",
+      "nacionalidad": "Ecuatoriana",
+      "fechanacimiento": "2003/02/15",
+      "imagen": "https://pm1.aminoapps.com/6225/57228670c33b251c9d1862d6d701befe0a7bf667_hq.jpg",
+      "biografia": "Autor contemporáneo, conocido por su obra 'El Libro de Bill', que explora temas de misterio y suspenso.",
+      "generosprincipales": "Misterio, Suspenso",
+      "activo": true,
+      "id": "10"
+    },
+    {
       "nombre": "Frida Kahlo",
       "nacionalidad": "Mexicana",
       "fechanacimiento": "1907-07-06",
       "imagen": "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/0485/production/_102075110_frida-kahlo-in-blue-satin-b.gif.webp",
       "biografia": "Frida Kahlo fue una pintora mexicana, conocida por sus autorretratos que exploran la identidad, el sufrimiento y la condición femenina. Su vida estuvo marcada por el dolor físico y una constante lucha contra enfermedades.",
       "generosprincipales": "Autobiografía, Arte, Identidad cultural",
-      "activo": true
+      "activo": true,
+      "id": "11"
     },
     {
-      "nombre": "jose jose",
+      "nombre": "Jose Jose",
       "nacionalidad": "ecuatoriana",
       "fechanacimiento": "1999-05-21",
-      "imagen": "",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Jos%C3%A9_Jos%C3%A9.png",
       "biografia": "gran escritor",
       "generosprincipales": "Fantasia, Accion Romance",
       "activo": true,
-      "id": "6e79"
+      "id": "12"
     }
   ]
 }

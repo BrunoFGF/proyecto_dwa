@@ -17,21 +17,24 @@ export class ListaReseniaComponent implements OnInit {
   resenias: Resenia[] = [];
   title = 'Lista de Reseñas';
 
-  constructor(private reseniajsonService: ReseniajsonService, private dialog: MatDialog) {}
+  constructor(private miServicio: ReseniajsonService, private mydialog: MatDialog) {}
 
   ngOnInit(): void {
     this.cargarResenias();
   }
 
   cargarResenias(): void {
-    this.reseniajsonService.getResenias().subscribe((data) => (this.resenias = data));
+    this.miServicio.getResenias().subscribe((data:Resenia[]) =>{
+      this.resenias=data;
+      console.log(this.resenias[1]);
+    }) 
   }
 
-  intercambiar(resenia: Resenia): void {
-    const dialogRef = this.dialog.open(MyDialogComponent, {
+  intercambiar(resenias: Resenia): void {
+    const dialogRef = this.mydialog.open(MyDialogComponent, {
       data: {
         titulo: 'Intercambio de Reseña',
-        contenido: `¿Deseas intercambiar la reseña "${resenia.titulo}"?`,
+        contenido: `¿Te gusto "${resenias.titulo}"?`,
       } as DialogData,
     });
 

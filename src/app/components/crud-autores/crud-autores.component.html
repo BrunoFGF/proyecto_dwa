@@ -32,19 +32,19 @@
       
          </div>
 
-     <div class="formElement">
-    
-        <mat-form-field class="formElement">
-          <mat-label>Fecha de nacimiento</mat-label>
-          <input matInput type="text"  formControlName="fechanacimiento"/>
+         <div class="formElement">
+          <mat-form-field class="formElement">
+            <mat-label>Fecha de lanzamiento:</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechanacimiento" [min]="fechaMinima" [max]="fechaMaxima"/>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-error>
             <ng-container *ngIf="form.get('fechanacimiento')?.invalid && (form.get('fechanacimiento')?.dirty || form.get('fechanacimiento')?.touched)">
               <span *ngIf="form.get('fechanacimiento')?.errors?.['required']">Fecha de nacimiento es requerido</span>
             </ng-container>
           </mat-error>
-        </mat-form-field>
-      
-         </div>
+          </mat-form-field>        
+        </div>
 
          <div class="formElement">
     

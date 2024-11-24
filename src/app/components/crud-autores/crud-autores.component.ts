@@ -10,7 +10,7 @@ import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/fo
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule, NgIf } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -20,7 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   standalone: true,
   imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
     MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule,CommonModule,NgIf, ReactiveFormsModule, MatDatepickerModule],
+    MatFormFieldModule,CommonModule,NgIf, ReactiveFormsModule, MatDatepickerModule, MatNativeDatemodule],
   templateUrl: './crud-autores.component.html',
   styleUrl: './crud-autores.component.css'
 })

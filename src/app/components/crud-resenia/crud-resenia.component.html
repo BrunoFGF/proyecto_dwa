@@ -1,1 +1,27 @@
-<p>crud-resenia works!</p>
+<form [formGroup]="reseniaForm" (ngSubmit)="guardarResenia()">
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="titulo" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Autor</mat-label>
+      <input matInput formControlName="autor" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>URL Imagen</mat-label>
+      <input matInput formControlName="imagen" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Opinión</mat-label>
+      <input matInput type="number" formControlName="opinion" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Comentario</mat-label>
+      <textarea matInput formControlName="comentario"></textarea>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">
+      {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+    </button>
+    <button mat-button type="button" (click)="cancelarEdicion()">Cancelar</button>
+  </form>
+  

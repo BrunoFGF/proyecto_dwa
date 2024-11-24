@@ -13,9 +13,10 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './lista-resenia.component.html',
   styleUrl: './lista-resenia.component.css'
 })
-export class ListaReseniaComponent implements OnInit {
-  resenias: Resenia[] = [];
+export class ListaReseniaComponent {
+  
   title = 'Lista de Reseñas';
+  resenias: Resenia[] = [];
 
   constructor(private miServicio: ReseniajsonService, private mydialog: MatDialog) {}
 

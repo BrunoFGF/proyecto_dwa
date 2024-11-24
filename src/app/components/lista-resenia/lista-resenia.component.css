@@ -1,0 +1,20 @@
+.lista-resenias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .resenia-card {
+    width: 300px;
+    margin: 8px;
+  }
+  
+  mat-card {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  mat-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  

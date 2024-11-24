@@ -1,1 +1,19 @@
-<p>lista-resenia works!</p>
+<h2>{{ title }}</h2>
+<div class="lista-resenias">
+  <mat-card *ngFor="let resenia of resenias" class="resenia-card">
+    <mat-card-header>
+      <mat-card-title>{{ resenia.titulo }}</mat-card-title>
+      <mat-card-subtitle>{{ resenia.autor }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="resenia.imagen" [alt]="resenia.titulo" />
+    <mat-card-content>
+      <p>{{ resenia.comentario }}</p>
+      <p><strong>Opinión:</strong> {{ resenia.opinion }}/10</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="intercambiar(resenia)">
+        Intercambiar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

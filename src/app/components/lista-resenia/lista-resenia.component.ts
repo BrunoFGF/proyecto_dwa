@@ -20,9 +20,7 @@ export class ListaReseniaComponent {
 
   constructor(private miServicio: ReseniajsonService, private mydialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.cargarResenias();
-  }
+  ngOnInit(): void {this.cargarResenias();};
 
   cargarResenias(): void {
     this.miServicio.getResenias().subscribe((data:Resenia[]) =>{

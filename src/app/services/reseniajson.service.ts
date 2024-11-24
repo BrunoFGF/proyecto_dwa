@@ -8,7 +8,7 @@ import { Resenia } from '../models/Resenia';
   providedIn: 'root',
 })
 export class ReseniajsonService {
-  private jsonUrl = 'http://localhost:3000/libros';
+  private jsonUrl = 'http://localhost:3000/resenia';
 
   constructor(private http: HttpClient) {}
 

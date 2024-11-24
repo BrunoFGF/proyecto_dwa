@@ -20,7 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   standalone: true,
   imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
     MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule,CommonModule,NgIf, ReactiveFormsModule, MatDatepickerModule, MatNativeDatemodule],
+    MatFormFieldModule,CommonModule,NgIf, ReactiveFormsModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './crud-autores.component.html',
   styleUrl: './crud-autores.component.css'
 })

@@ -278,9 +278,9 @@
       "id": "12"
     }
   ],
-  "resenia":[
+  "resenia": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "El Principito",
       "autor": "Antoine de Saint-Exupéry",
       "imagen": "https://www.laesferaazul.com/wp-content/uploads/2022/09/Descubrir-el-Principito-scaled.jpg",
@@ -288,7 +288,7 @@
       "comentario": "Una historia hermosa que enseña lecciones valiosas sobre la vida."
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Cien años de soledad",
       "autor": "Gabriel García Márquez",
       "imagen": "https://www.mrbooks.com/mrbooks/portadas/9786287641587.webp",
@@ -296,7 +296,7 @@
       "comentario": "Una obra maestra de la literatura que explora la soledad y el destino."
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Sapiens: De animales a dioses",
       "autor": "Yuval Noah Harari",
       "imagen": "https://www.teluria.com.uy/images/virtuemart/product/9788499924212.jpg",
@@ -304,7 +304,7 @@
       "comentario": "Un análisis fascinante sobre la historia de la humanidad."
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "La odisea",
       "autor": "Homero",
       "imagen": "https://www.loqueleo.com/ec/uploads/2019/02/resized/800_la-odisea.jpg",
@@ -312,7 +312,7 @@
       "comentario": "Un clásico que narra aventuras épicas y la búsqueda de la identidad."
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "El Código Da Vinci",
       "autor": "Dan Brown",
       "imagen": "https://intothebooksheart.com/wp-content/uploads/2017/02/918tCwcm4L.jpg",
@@ -320,7 +320,7 @@
       "comentario": "Entretenido, pero a veces se siente un poco forzado."
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Harry Potter y el prisionero de Azkaban",
       "autor": "J.K. Rowling",
       "imagen": "https://http2.mlstatic.com/D_NQ_NP_830384-MLA43284461240_082020-O.webp",
@@ -328,7 +328,7 @@
       "comentario": "Una historia mágica que profundiza en la amistad y el sacrificio."
     },
     {
-      "id": 7,
+      "id": "7",
       "titulo": "Breve historia del tiempo",
       "autor": "Stephen Hawking",
       "imagen": "https://m.media-amazon.com/images/I/91QH0SHtdOL._AC_UF1000,1000_QL80_.jpg",
@@ -336,7 +336,7 @@
       "comentario": "Un libro accesible que explica conceptos complejos de la física."
     },
     {
-      "id": 8,
+      "id": "8",
       "titulo": "El arte de la guerra",
       "autor": "Sun Tzu",
       "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/40/fa/40fa6a6657f79a3752fbf7a8501ccebd.jpg",
@@ -344,7 +344,7 @@
       "comentario": "Un texto antiguo que sigue siendo relevante en la estrategia moderna."
     },
     {
-      "id": 9,
+      "id": "9",
       "titulo": "El Libro de Bill",
       "autor": "Luis Aguirre",
       "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/96/35/9635d9539ec48156bf576d5301e6e54e.jpg",
@@ -352,7 +352,7 @@
       "comentario": "Una lectura intrigante que mezcla misterio y suspenso."
     },
     {
-      "id": 10,
+      "id": "10",
       "titulo": "El hombre en busca de sentido",
       "autor": "Viktor Frankl",
       "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/75/c0/75c0bd053ec1e0a6671a1d9d13892582.jpg",

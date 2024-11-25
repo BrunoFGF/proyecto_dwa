@@ -6,6 +6,7 @@ import { CrudAutoresComponent } from './components/crud-autores/crud-autores.com
 import { ListaReseniaComponent } from './components/lista-resenia/lista-resenia.component';
 import { CrudReseniaComponent } from './components/crud-resenia/crud-resenia.component';
 import {CrudIntercambiosComponent} from './components/crud-intercambios/crud-intercambios.component';
+import {CrudUsuariosComponent} from './components/crud-usuarios/crud-usuarios.component';
 
 export const routes: Routes = [
     {path: "lista-libros", component: ListaLibrosComponent},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: "lista-resenia",component: ListaReseniaComponent},
     {path: "crud-resenia",component: CrudReseniaComponent},
     {path: "crud-intercambios", component: CrudIntercambiosComponent},
+    {path: "crud-usuarios", component: CrudUsuariosComponent},
     {path: "", redirectTo:"lista-libros", pathMatch:'full'},
     {path: "**", redirectTo:"lista-libros"},///**  otra ruta mal */
 

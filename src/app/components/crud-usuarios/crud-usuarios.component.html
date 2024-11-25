@@ -1,0 +1,152 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="form-grid">
+    <!-- Campo: Nombre -->
+    <mat-form-field class="formElement">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+        Nombre es requerido
+      </mat-error>
+      <mat-error *ngIf="form.get('nombre')?.hasError('minlength')">
+        Nombre debe tener al menos 2 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Apellido -->
+    <mat-form-field class="formElement">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido" />
+      <mat-error *ngIf="form.get('apellido')?.hasError('required')">
+        Apellido es requerido
+      </mat-error>
+      <mat-error *ngIf="form.get('apellido')?.hasError('minlength')">
+        Apellido debe tener al menos 2 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Email -->
+    <mat-form-field class="formElement">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        Email es requerido
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Password -->
+    <mat-form-field class="formElement">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Contraseña es requerida
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+        Contraseña debe tener al menos 6 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Teléfono -->
+    <mat-form-field class="formElement">
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="tel" formControlName="telefono" />
+    </mat-form-field>
+
+    <!-- Campo: Rol -->
+    <mat-form-field class="formElement">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="rol">
+        <mat-option *ngFor="let rol of roles" [value]="rol">
+          {{ rol | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Campo: Estado -->
+    <mat-form-field class="formElement">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option *ngFor="let estado of estados" [value]="estado">
+          {{ estado | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Campo: URL Avatar -->
+    <mat-form-field class="formElement">
+      <mat-label>URL Avatar</mat-label>
+      <input matInput formControlName="avatar_url" />
+    </mat-form-field>
+  </div>
+
+  <!-- Campo: Dirección -->
+  <mat-form-field class="formElement">
+    <mat-label>Dirección</mat-label>
+    <textarea matInput formControlName="direccion" rows="2"></textarea>
+  </mat-form-field>
+
+  <!-- Botones de acción -->
+  <div class="actions">
+    <button mat-raised-button color="warn" type="button" (click)="clearForm()">
+      Cancelar
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Actualizar' : 'Crear' }} Usuario
+    </button>
+  </div>
+</form>
+
+<div class="search-container">
+  <mat-form-field>
+    <mat-label>Buscar usuario</mat-label>
+    <input matInput type="search" #searchInput (keyup)="search(searchInput)" placeholder="Nombre, email..." />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-table">
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let usuario"> {{ usuario.nombre }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let usuario"> {{ usuario.email }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="rol">
+    <mat-header-cell *matHeaderCellDef> Rol </mat-header-cell>
+    <mat-cell *matCellDef="let usuario"> {{ usuario.rol }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+    <mat-cell *matCellDef="let usuario"> {{ usuario.estado }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let usuario">
+      <button mat-icon-button color="primary" (click)="editar(usuario)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="eliminar(usuario)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="cambiarEstado(usuario, usuario.estado === 'activo' ? 'inactivo' : 'activo')">
+        <mat-icon>{{ usuario.estado === 'activo' ? 'toggle_on' : 'toggle_off' }}</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['nombre', 'email', 'rol', 'estado', 'acciones']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['nombre', 'email', 'rol', 'estado', 'acciones']"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="5" showFirstLastButtons></mat-paginator>

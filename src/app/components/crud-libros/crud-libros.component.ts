@@ -15,6 +15,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { AutoresjsonService } from '../../services/autoresjson.service';
 import { Autor } from '../../models/Autor';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificacionComponent } from '../shared/notificacion/notificacion.component';
 
 @Component({
   selector: 'app-crud-libros',
@@ -61,7 +63,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
   }
 
   constructor(private librosService:LibrosjsonService, private AutoresService:AutoresjsonService, private fb: FormBuilder,
-    private mydialog:MatDialog
+    private mydialog:MatDialog, private snackBar: MatSnackBar
   ){}
 
   getLibros():void{
@@ -76,6 +78,15 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
     });
   }
 
+  mostrarNotificacion(mensaje: string, duracion: number) {
+    this.snackBar.openFromComponent(NotificacionComponent, {
+      data: { mensaje },
+      duration: duracion,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+      
+    });
+  }
 
   search(searchInput: HTMLInputElement){
     if(searchInput.value){///representa lo que el usuario escribio en la caja de texto
@@ -94,8 +105,8 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
     if (libros && libros.id) {
       this.currentId = libros.id;
     } else {
-      console.log("Libro o el id del libro están undefined");
-      return; // Salir si no hay datos válidos.
+      this.mostrarNotificacion("Libro o el id del libro están undefined",3000)
+      return; 
     }
   
     // Actualizar las categorías según el área del libro
@@ -107,7 +118,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
         titulo: libros.titulo,
         autor: libros.autor,
         area: libros.area,
-        categoria: libros.categoria, // Asegúrate de que este campo esté actualizado
+        categoria: libros.categoria,
         estado: libros.estado,
         descripcion: libros.descripcion,
         idioma: libros.idioma,
@@ -115,7 +126,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
         imagen: libros.imagen ? libros.imagen : '',
         disponibilidad: libros.disponibilidad
       });
-    }, 0); // `setTimeout` asegura que las categorías estén listas antes de asignar el valor.
+    }, 0); // setTimeout asegura que las categorías estén listas antes de asignar el valor.
   }
 
   eliminar(libros:Libros):void{
@@ -130,9 +141,11 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
     dialogRef.afterClosed().subscribe(result =>{
       if(result === "aceptar"){
         this.librosService.deleteLibro(libros).subscribe(()=> {
+          this.mostrarNotificacion("El libro " + libros.titulo +" fue eliminado", 3000);
           this.getLibros();//para que se actualize
         });
       }else if (result === "cancelar"){
+        this.mostrarNotificacion("Operacion Cancelada", 3000);
       }
     });
   }
@@ -168,42 +181,24 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
 
       newLibro.id = this.currentId;
       this.librosService.updateLibro(newLibro).subscribe((updateLibro)=>{
-        alert("El libro fue editado exitosamente");
+        this.mostrarNotificacion("El libro fue editado exitosamente", 3000);
         this.getLibros();
-        
       });
 
     }else{//agregar
 
       this.librosService.addLibro(newLibro).subscribe((addLibro)=>{
-        alert("El libro fue agregado exitosamente");
+        this.mostrarNotificacion("El libro fue agregado exitosamente", 3000);
         this.getLibros();
       });
     }
-
     this.clearForm();
-
   }
 
   //seleccionar Area y mostrar categoria segun el area.
   areas: string[] = [
-    'Literatura',
-    'CienciaFiccion',
-    'Ciencia',
-    'Historia',
-    'Psicologia',
-    'Filosofia',
-    'Infantil_y_Juvenil',
-    'Artes_y_Cultura',
-    'Estrategia_y_Negocios',
-    'Religion',
-    'Educacion',
-    'Tecnicos',
-    'Gastronomia',
-    'Viajes',
-    'Deportes',
-    'Sociedad',
-    'Misterio_y_Suspenso']; // Áreas
+    'Literatura','CienciaFiccion','Ciencia','Historia','Psicologia','Filosofia','Infantil_y_Juvenil','Artes_y_Cultura',
+    'Estrategia_y_Negocios','Religion','Educacion','Tecnicos','Gastronomia','Viajes','Deportes','Sociedad','Misterio_y_Suspenso']; // Áreas
   categorias: string[] = [];
   selectedArea: string = '';
   selectedCategoria: string = '';

@@ -131,7 +131,7 @@
       "disponibilidad": true
     },
     {
-      "titulo": "Cien años de soledad",
+      "titulo": "Cien años de soledad ",
       "autor": "Gabriel García Márquez",
       "area": "Literatura",
       "categoria": "Novela",
@@ -142,6 +142,19 @@
       "imagen": "https://images.cdn2.buscalibre.com/fit-in/360x360/38/12/3812f54c9c10992f538ead2c95d775ed.jpg",
       "disponibilidad": true,
       "id": "ffc1"
+    },
+    {
+      "id": "44b7",
+      "titulo": "prueba",
+      "autor": "Homero",
+      "area": "Ciencia",
+      "categoria": "Matematicas",
+      "estado": "Usado - Excelente",
+      "descripcion": "prueba",
+      "idioma": "Chino",
+      "ubicacion": "prueba",
+      "imagen": null,
+      "disponibilidad": true
     }
   ],
   "autor": [

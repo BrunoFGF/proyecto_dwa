@@ -30,7 +30,8 @@ form > div {
 
 /* Buttons */
 button {
-    min-width: 100px;
+    min-width: auto;
+    text-align: center;
 }
 
 button[type="submit"] {
@@ -43,9 +44,19 @@ button[type="reset"] {
     color: white;
 }
 
+button[data-tipo="eliminar"] {
+
+    color: #f44336;
+  }
+  
+  button[data-tipo="editar"] {
+    color: #1976d2;
+  }
+
+
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
     form {
         padding: 8px;
     }
@@ -77,18 +88,17 @@ button[type="reset"] {
     flex: 1;
 }
 
+
 table button{
     margin: 5px;
 }
 
 table  th{
-
     background-color: #c6d6eb;
     text-align: center;
 }
 
 table td{
-
     text-align: center;
 }
 

@@ -17,13 +17,14 @@ import { AutoresjsonService } from '../../services/autoresjson.service';
 import { Autor } from '../../models/Autor';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificacionComponent } from '../shared/notificacion/notificacion.component';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-crud-libros',
   standalone: true,
   imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
     MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule,CommonModule,NgIf,NgFor,FormsModule, ReactiveFormsModule
+    MatFormFieldModule,CommonModule,NgIf,NgFor,FormsModule,MatIcon, ReactiveFormsModule
   ],
   templateUrl: './crud-libros.component.html',
   styleUrl: './crud-libros.component.css'

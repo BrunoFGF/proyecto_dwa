@@ -1,8 +1,8 @@
 <!-- Formulario Reactivo -->
 <form [formGroup]="form" class="ocultar" (submit)="onSubmit()">
 
-  <!-- Campo: Título -->
-   <div class="formElement">
+   <!-- Campo: Título -->
+   <div>
 
     <mat-form-field class="formElement">
       <mat-label>Título:</mat-label>
@@ -17,7 +17,7 @@
 
    </div>
 
-  <!-- Campo: Autor -->
+   <!-- Campo: Autor -->
    <div class="formElement">
 
       <mat-form-field class="formElement">
@@ -185,15 +185,13 @@
 
     <mat-form-field class="search-container">
         <mat-label> Buscar:</mat-label>
-        <input matInput type="search" placeholder="area o categoria" #searchInput (keyup)="search(searchInput)"/>
+        <input matInput type="search" placeholder="Buscar por area" #searchInput (keyup)="search(searchInput)"/>
+        <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-
-    <button mat-raised-button (click)= "search(searchInput)">Buscar</button>
-    
 </div>
 
 
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" class="mat-table">
 
   <ng-container matColumnDef="titulo">
     <th mat-header-cell *matHeaderCellDef> Titulo </th>
@@ -238,8 +236,15 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Acciones</th>
     <td mat-cell *matCellDef="let libro"> 
-    <button mat-raised-button (click)="editar(libro)">Editar</button>    
-    <button mat-raised-button (click)="eliminar(libro)">Eliminar</button>  
+
+      <button mat-raised-button data-tipo="editar" (click)="editar(libro)"> 
+        <mat-icon>editar</mat-icon>Editar
+      </button>    
+      
+      <button mat-raised-button data-tipo="eliminar" (click)="eliminar(libro)">
+        <mat-icon>delete</mat-icon>Eliminar
+      </button>
+      
     </td>
   </ng-container>
 
@@ -248,5 +253,5 @@
 
 </table>
 
-<mat-paginator [pageSizeOptions]="[4, 7, 20]" aria-label="Select page" showFirstLastButtons>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" aria-label="Select page" showFirstLastButtons>
 </mat-paginator>

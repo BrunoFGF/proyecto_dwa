@@ -1,0 +1,187 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="form-grid">
+    <!-- Campo: Libro Ofrecido -->
+    <mat-form-field class="formElement">
+      <mat-label>Libro Ofrecido</mat-label>
+      <mat-select formControlName="libro_ofrecido_id">
+        <mat-option *ngFor="let libro of librosDisponibles" [value]="libro.id">
+          {{ libro.titulo }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('libro_ofrecido_id')?.hasError('required')">
+        Libro ofrecido es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Libro Solicitado -->
+    <mat-form-field class="formElement">
+      <mat-label>Libro Solicitado</mat-label>
+      <mat-select formControlName="libro_solicitado_id">
+        <mat-option *ngFor="let libro of librosDisponibles" [value]="libro.id">
+          {{ libro.titulo }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('libro_solicitado_id')?.hasError('required')">
+        Libro solicitado es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Usuario Solicitante -->
+    <mat-form-field class="formElement">
+      <mat-label>ID Usuario Solicitante</mat-label>
+      <input matInput type="number" formControlName="usuario_solicitante_id" />
+      <mat-error *ngIf="form.get('usuario_solicitante_id')?.hasError('required')">
+        Usuario solicitante es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Usuario Propietario -->
+    <mat-form-field class="formElement">
+      <mat-label>ID Usuario Propietario</mat-label>
+      <input matInput type="number" formControlName="usuario_propietario_id" />
+      <mat-error *ngIf="form.get('usuario_propietario_id')?.hasError('required')">
+        Usuario propietario es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Estado -->
+    <mat-form-field class="formElement">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado">
+        <mat-option *ngFor="let estado of estadosIntercambio" [value]="estado">
+          {{ estado | titlecase }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('estado')?.hasError('required')">
+        Estado es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo: Fecha de Intercambio -->
+    <mat-form-field class="formElement">
+      <mat-label>Fecha de Intercambio</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha_intercambio">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Campo: Ubicación -->
+    <mat-form-field class="formElement">
+      <mat-label>Ubicación del Intercambio</mat-label>
+      <input matInput formControlName="ubicacion_intercambio" />
+    </mat-form-field>
+  </div>
+
+  <!-- Campo: Mensaje -->
+  <mat-form-field class="formElement">
+    <mat-label>Mensaje</mat-label>
+    <textarea matInput formControlName="mensaje" rows="3"></textarea>
+    <mat-error *ngIf="form.get('mensaje')?.hasError('required')">
+      Mensaje es requerido
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Botones de acción -->
+  <div class="actions">
+    <button mat-raised-button color="warn" type="button" (click)="clearForm()">
+      Cancelar
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Actualizar' : 'Crear' }} Intercambio
+    </button>
+  </div>
+</form>
+
+<!-- Búsqueda -->
+<div class="search-container">
+  <mat-form-field>
+    <mat-label>Buscar por estado</mat-label>
+    <input matInput type="search" #searchInput (keyup)="search(searchInput)" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="search(searchInput)">
+    Buscar
+  </button>
+</div>
+
+<!-- Tabla de Intercambios -->
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="libro_ofrecido_id">
+      <th mat-header-cell *matHeaderCellDef>Libro Ofrecido</th>
+      <td mat-cell *matCellDef="let intercambio">
+        {{ getLibroTitulo(intercambio.libro_ofrecido_id) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="libro_solicitado_id">
+      <th mat-header-cell *matHeaderCellDef>Libro Solicitado</th>
+      <td mat-cell *matCellDef="let intercambio">
+        {{ getLibroTitulo(intercambio.libro_solicitado_id) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario_solicitante_id">
+      <th mat-header-cell *matHeaderCellDef>Solicitante</th>
+      <td mat-cell *matCellDef="let intercambio">
+        {{ getUsuarioNombre(intercambio.usuario_solicitante_id) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario_propietario_id">
+      <th mat-header-cell *matHeaderCellDef>Propietario</th>
+      <td mat-cell *matCellDef="let intercambio">
+        {{ getUsuarioNombre(intercambio.usuario_propietario_id) }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <td mat-cell *matCellDef="let intercambio">
+        <span class="estado-badge" [ngClass]="'estado-' + intercambio.estado">
+          {{ intercambio.estado | titlecase }}
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha_solicitud">
+      <th mat-header-cell *matHeaderCellDef>Fecha Solicitud</th>
+      <td mat-cell *matCellDef="let intercambio">
+        {{ intercambio.fecha_solicitud | date:'shortDate' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ubicacion_intercambio">
+      <th mat-header-cell *matHeaderCellDef>Ubicación</th>
+      <td mat-cell *matCellDef="let intercambio">{{ intercambio.ubicacion_intercambio }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let intercambio">
+        <div class="table-actions">
+          <button mat-button color="primary" (click)="editar(intercambio)">
+            <mat-icon>edit</mat-icon> Editar
+          </button>
+          <button mat-button color="warn" (click)="eliminar(intercambio)">
+            <mat-icon>delete</mat-icon> Eliminar
+          </button>
+          <button mat-button color="primary"
+                  *ngIf="intercambio.estado === 'pendiente'"
+                  (click)="actualizarEstado(intercambio, 'aceptado')">
+            <mat-icon>check_circle</mat-icon> Aceptar
+          </button>
+          <button mat-button color="accent"
+                  *ngIf="intercambio.estado === 'aceptado'"
+                  (click)="actualizarEstado(intercambio, 'completado')">
+            <mat-icon>done_all</mat-icon> Completar
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['libro_ofrecido_id', 'libro_solicitado_id', 'estado', 'fecha_solicitud', 'ubicacion_intercambio', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['libro_ofrecido_id', 'libro_solicitado_id', 'estado', 'fecha_solicitud', 'ubicacion_intercambio', 'actions'];"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+</div>

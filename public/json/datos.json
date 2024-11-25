@@ -278,7 +278,7 @@
       "id": "12"
     }
   ],
-  "resenia":[
+  "resenia": [
     {
       "id": 1,
       "titulo": "El Principito",
@@ -358,6 +358,22 @@
       "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/75/c0/75c0bd053ec1e0a6671a1d9d13892582.jpg",
       "opinion": 10,
       "comentario": "Una reflexión profunda sobre la vida y la búsqueda de significado."
+    }
+  ],
+  "intercambios": [
+    {
+      "fecha_solicitud": "2024-11-24T23:57:11.607Z",
+      "fecha_intercambio": "2024-11-11T05:00:00.000Z",
+      "estado": "pendiente",
+      "libro_ofrecido_id": "1",
+      "libro_solicitado_id": "2",
+      "usuario_solicitante_id": 1,
+      "usuario_propietario_id": 2,
+      "ubicacion_intercambio": "asd",
+      "mensaje": "asdasd",
+      "calificacion_intercambio": null,
+      "comentario_intercambio": "",
+      "id": "d47f"
     }
   ]
 }

@@ -18,9 +18,22 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 @Component({
   selector: 'app-crud-autores',
   standalone: true,
-  imports: [MatFormField, MatLabel, MatPaginatorModule, MatButtonModule, MatInputModule,
-    MatTableModule, MatSelectModule, MatCheckboxModule, MatOptionModule,
-    MatFormFieldModule,CommonModule,NgIf, ReactiveFormsModule, MatDatepickerModule, MatNativeDatemodule],
+  imports: [
+    MatFormField,
+    MatLabel,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatInputModule,
+    MatTableModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    CommonModule,
+    NgIf,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule],
   templateUrl: './crud-autores.component.html',
   styleUrl: './crud-autores.component.css'
 })
@@ -75,7 +88,7 @@ export class CrudAutoresComponent implements OnInit, AfterViewInit {
 
   editar(autor: Autor): void {
     this.isEditMode = true;
-  
+
     if (autor && autor.id) {
       this.currentId = autor.id;
     } else {
@@ -145,7 +158,7 @@ export class CrudAutoresComponent implements OnInit, AfterViewInit {
       this.autoresService.updateAutor(newAutor).subscribe((updateAutor)=>{
         alert("El autor fue editado exitosamente");
         this.getAutores();
-        
+
       });
 
     }else{//agregar

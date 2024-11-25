@@ -1,28 +1,33 @@
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReseniajsonService } from '../../services/reseniajson.service';
 import { Resenia } from '../../models/Resenia';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatIcon } from '@angular/material/icon';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-crud-resenia',
   standalone: true,
-  imports: [MatInputModule, ReactiveFormsModule],
+  imports: [MatInputModule, ReactiveFormsModule,MatPaginator,MatIcon,MatTableModule],
   templateUrl: './crud-resenia.component.html',
   styleUrl: './crud-resenia.component.css'
 })
 export class CrudReseniaComponent {
   reseniaForm!: FormGroup;
-  resenias: Resenia[] = [];
+  dataSource = new MatTableDataSource<Resenia>();
+  displayedColumns: string[] = ['titulo', 'autor', 'opinion', 'comentario', 'acciones'];
   isEditMode = false;
   currentId: number | null = null;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private fb: FormBuilder, private reseniajsonService: ReseniajsonService) {}
 
   ngOnInit(): void {
-    this.cargarResenias();
     this.inicializarFormulario();
+    this.cargarResenias();
   }
 
   inicializarFormulario(): void {
@@ -36,7 +41,10 @@ export class CrudReseniaComponent {
   }
 
   cargarResenias(): void {
-    this.reseniajsonService.getResenias().subscribe((data) => (this.resenias = data));
+    this.reseniajsonService.getResenias().subscribe((data) => {
+      this.dataSource.data = data;
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   guardarResenia(): void {
@@ -51,6 +59,7 @@ export class CrudReseniaComponent {
         this.cancelarEdicion();
       });
     } else {
+      nuevaResenia.id = Date.now(); // Simulamos un ID único
       this.reseniajsonService.addResenia(nuevaResenia).subscribe(() => {
         this.cargarResenias();
         this.reseniaForm.reset();
@@ -73,5 +82,4 @@ export class CrudReseniaComponent {
     this.currentId = null;
     this.reseniaForm.reset();
   }
-
 }

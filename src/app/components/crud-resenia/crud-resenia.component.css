@@ -1,0 +1,27 @@
+.container {
+    margin: 16px;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  .tabla {
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    max-width: 300px;
+  }
+  

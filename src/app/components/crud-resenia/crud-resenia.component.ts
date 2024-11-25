@@ -6,11 +6,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatIcon } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotificacionComponent } from '../shared/notificacion/notificacion.component';
 
 @Component({
   selector: 'app-crud-resenia',
   standalone: true,
-  imports: [MatInputModule, ReactiveFormsModule, MatPaginator, MatIcon, MatTableModule],
+  imports: 
+  [
+    MatInputModule, 
+    ReactiveFormsModule, 
+    MatPaginator, 
+    MatIcon, 
+    MatTableModule,
+    MatSnackBarModule
+  ],
   templateUrl: './crud-resenia.component.html',
   styleUrl: './crud-resenia.component.css'
 })
@@ -22,15 +32,22 @@ export class CrudReseniaComponent implements OnInit {
   currentId: number | null = null;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private fb: FormBuilder, private reseniajsonService: ReseniajsonService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private reseniajsonService: ReseniajsonService,
+    private snackBar: MatSnackBar
+  ){}
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.inicializarFormulario();
     this.cargarResenias();
   }
 
-  inicializarFormulario(): void {
-    this.reseniaForm = this.fb.group({
+  inicializarFormulario(): void 
+  {
+    this.reseniaForm = this.fb.group
+    ({
       titulo: ['', Validators.required],
       autor: ['', Validators.required],
       imagen: ['', Validators.required],
@@ -39,50 +56,75 @@ export class CrudReseniaComponent implements OnInit {
     });
   }
 
-  cargarResenias(): void {
-    this.reseniajsonService.getResenias().subscribe((data) => {
+  cargarResenias(): void 
+  {
+    this.reseniajsonService.getResenias().subscribe((data) => 
+    {
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  guardarResenia(): void {
-    if (this.reseniaForm.invalid) return;
+  guardarResenia(): void 
+  {
+    if (this.reseniaForm.invalid) return;    
+    const nuevaResenia: Resenia = this.reseniaForm.value;    
     
-    const nuevaResenia: Resenia = this.reseniaForm.value;
-    
-    if (this.isEditMode && this.currentId) {
-      nuevaResenia.id = this.currentId;
-      this.reseniajsonService.updateResenia(nuevaResenia).subscribe(() => {
+    if (this.isEditMode && this.currentId) 
+    {
+      nuevaResenia.id = this.currentId;      
+      this.reseniajsonService.updateResenia(nuevaResenia).subscribe(() => 
+      {
         this.cargarResenias();
+        this.mostrarNotificacion('Reseña actualizada exitosamente');
         this.cancelarEdicion();
       });
-    } else {
+    } else 
+    {
       // Remove the id property when adding a new review
       delete nuevaResenia.id;
-      this.reseniajsonService.addResenia(nuevaResenia).subscribe(() => {
+      this.reseniajsonService.addResenia(nuevaResenia).subscribe(() => 
+      {
         this.cargarResenias();
+        this.mostrarNotificacion('Reseña creada exitosamente');
         this.reseniaForm.reset();
       });
     }
   }
 
-  editarResenia(resenia: Resenia): void {
+  editarResenia(resenia: Resenia): void 
+  {
     this.isEditMode = true;
     this.currentId = resenia.id!;
     this.reseniaForm.patchValue(resenia);
   }
 
-  eliminarResenia(id: number): void {
-    this.reseniajsonService.deleteResenia(id).subscribe(() => {
+  eliminarResenia(id: number): void 
+  {    
+    this.reseniajsonService.deleteResenia(id).subscribe(() => 
+    {
       this.cargarResenias();
+      this.mostrarNotificacion('Reseña eliminada exitosamente');
       this.cancelarEdicion();
     });
   }
 
-  cancelarEdicion(): void {
+  cancelarEdicion(): void 
+  {
     this.isEditMode = false;
     this.currentId = null;
     this.reseniaForm.reset();
+  }
+
+  //notificaciones
+  private mostrarNotificacion(mensaje: string): void 
+  {
+    this.snackBar.openFromComponent(NotificacionComponent, 
+    {
+      data: { mensaje: mensaje },
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
   }
 }

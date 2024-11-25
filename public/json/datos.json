@@ -345,12 +345,12 @@
       "comentario": "Un texto antiguo que sigue siendo relevante en la estrategia moderna."
     },
     {
-      "id": "9",
       "titulo": "El Libro de Bill",
       "autor": "Luis Aguirre",
       "imagen": "https://images.cdn3.buscalibre.com/fit-in/360x360/96/35/9635d9539ec48156bf576d5301e6e54e.jpg",
-      "opinion": 8,
-      "comentario": "Una lectura intrigante que mezcla misterio y suspenso."
+      "opinion": 10,
+      "comentario": "Una lectura intrigante que mezcla misterio y suspenso.",
+      "id": "9"
     },
     {
       "titulo": "El hombre en busca de sentido",

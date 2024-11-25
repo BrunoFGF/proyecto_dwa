@@ -47,6 +47,7 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Intercambio>();
   librosDisponibles: any[] = [];
   usuariosDisponibles: any[] = [];
+  intercambios: any[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -68,6 +69,13 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getIntercambios();
     this.getLibrosDisponibles();
+    this.getUsuariosDisponibles();
+
+
+    this.intercambioService.getIntercambiosConUsuarios().subscribe(data => {
+      this.intercambios = data;
+    });
+
 
     this.form = this.fb.group({
       fecha_solicitud: [new Date(), [Validators.required]],
@@ -91,6 +99,12 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
   getIntercambios(): void {
     this.intercambioService.getIntercambios().subscribe((datos: Intercambio[]) => {
       this.dataSource.data = datos;
+    });
+  }
+
+  getUsuariosDisponibles(): void {
+    this.intercambioService.getUsuarios().subscribe(usuarios => {
+      this.usuariosDisponibles = usuarios;
     });
   }
 
@@ -165,10 +179,20 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
   }
 
   clearForm(): void {
-    this.form.reset({
-      fecha_solicitud: new Date(),
-      estado: 'pendiente'
+    this.form = this.fb.group({
+      fecha_solicitud: [new Date()],
+      fecha_intercambio: [null],
+      estado: ['pendiente'],
+      libro_ofrecido_id: [null],
+      libro_solicitado_id: [null],
+      usuario_solicitante_id: [null],
+      usuario_propietario_id: [null],
+      ubicacion_intercambio: [''],
+      mensaje: [''],
+      calificacion_intercambio: [null],
+      comentario_intercambio: ['']
     });
+
     this.currentId = 0;
     this.isEditMode = false;
   }

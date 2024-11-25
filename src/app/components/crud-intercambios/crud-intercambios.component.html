@@ -26,7 +26,7 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- Campo: Usuario Solicitante -->
+    <!-- Campo: Usuario.ts Solicitante -->
     <mat-form-field class="formElement">
       <mat-label>ID Usuario Solicitante</mat-label>
       <input matInput type="number" formControlName="usuario_solicitante_id" />
@@ -35,7 +35,7 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- Campo: Usuario Propietario -->
+    <!-- Campo: Usuario.ts Propietario -->
     <mat-form-field class="formElement">
       <mat-label>ID Usuario Propietario</mat-label>
       <input matInput type="number" formControlName="usuario_propietario_id" />
@@ -179,8 +179,9 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="['libro_ofrecido_id', 'libro_solicitado_id', 'estado', 'fecha_solicitud', 'ubicacion_intercambio', 'actions']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['libro_ofrecido_id', 'libro_solicitado_id', 'estado', 'fecha_solicitud', 'ubicacion_intercambio', 'actions'];"></tr>
+    <tr mat-header-row *matHeaderRowDef="['libro_ofrecido_id', 'libro_solicitado_id', 'usuario_solicitante_id', 'usuario_propietario_id', 'estado', 'fecha_solicitud', 'ubicacion_intercambio', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['libro_ofrecido_id', 'libro_solicitado_id', 'usuario_solicitante_id', 'usuario_propietario_id', 'estado', 'fecha_solicitud', 'ubicacion_intercambio', 'actions'];"></tr>
+
   </table>
 
   <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>

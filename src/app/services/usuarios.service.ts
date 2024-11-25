@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map, Observable, switchMap} from 'rxjs';
+import {catchError, map, Observable, switchMap, tap, throwError} from 'rxjs';
 import { Usuario } from '../models/Usuario';
 
 @Injectable({
@@ -49,7 +49,11 @@ export class UsuarioService {
         return usuario;
       }),
       // Enviar la solicitud para guardar el usuario
-      switchMap(usuarioConId => this.http.post<Usuario>(this.jsonUrl, usuarioConId))
+      switchMap(usuarioConId => {
+        // Convertir el id a cadena antes de enviarlo al backend.
+        const usuarioParaGuardar = { ...usuarioConId, id: String(usuarioConId.id) };
+        return this.http.post<Usuario>(this.jsonUrl, usuarioParaGuardar);
+      })
     );
   }
 
@@ -59,8 +63,21 @@ export class UsuarioService {
   }
 
   deleteUsuario(usuario: Usuario): Observable<void> {
+    if (!usuario.id) {
+      console.error('Intento de eliminar usuario sin ID');
+      return throwError(() => new Error('No se puede eliminar un usuario sin ID'));
+    }
+
     const url = `${this.jsonUrl}/${usuario.id}`;
-    return this.http.delete<void>(url);
+    console.log('Intentando eliminar usuario con URL:', url);
+
+    return this.http.delete<void>(url).pipe(
+      tap(() => console.log(`Usuario ${usuario.id} eliminado exitosamente`)),
+      catchError(error => {
+        console.error('Error detallado al eliminar:', error);
+        return throwError(() => new Error('Error al eliminar usuario'));
+      })
+    );
   }
 
   // Método para cambiar el estado del usuario

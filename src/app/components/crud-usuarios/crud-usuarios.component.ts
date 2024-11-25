@@ -11,10 +11,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Usuario } from '../../models/Usuario';
 import { UsuarioService } from '../../services/usuarios.service';
 import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
+import {NotificacionComponent} from '../shared/notificacion/notificacion.component';
 
 @Component({
   selector: 'app-crud-usuarios',
@@ -52,7 +54,8 @@ export class CrudUsuariosComponent implements OnInit, AfterViewInit {
   constructor(
       private usuarioService: UsuarioService,
       private fb: FormBuilder,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -134,8 +137,25 @@ export class CrudUsuariosComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === "aceptar") {
-        this.usuarioService.deleteUsuario(usuario).subscribe(() => {
-          this.getUsuarios();
+        this.usuarioService.deleteUsuario(usuario).subscribe({
+          next: () => {
+            this.getUsuarios();
+            this.snackBar.openFromComponent(NotificacionComponent, {
+              data: { mensaje: `Usuario ${usuario.nombre} ${usuario.apellido} eliminado exitosamente` },
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+          },
+
+          error: (error) => {
+            this.snackBar.openFromComponent(NotificacionComponent, {
+              data: { mensaje: `Error al eliminar usuario` },
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+          }
         });
       }
     });

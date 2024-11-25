@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -18,6 +19,8 @@ import { IntercambioService } from '../../services/intercambio.service';
 import { LibrosjsonService } from '../../services/librosjson.service';
 import { MyDialogComponent } from '../shared/my-dialog/my-dialog.component';
 import {MatIconModule} from '@angular/material/icon';
+import {NotificacionComponent} from '../shared/notificacion/notificacion.component';
+import {Usuario} from '../../models/Usuario';
 
 @Component({
   selector: 'app-crud-intercambios',
@@ -63,18 +66,16 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
     private intercambioService: IntercambioService,
     private librosService: LibrosjsonService,
     private fb: FormBuilder,
-    private mydialog: MatDialog
+    private mydialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.getIntercambios();
-    this.getLibrosDisponibles();
     this.getUsuariosDisponibles();
+    this.getLibrosDisponibles();
+    this.getIntercambios();
 
-
-    this.intercambioService.getIntercambiosConUsuarios().subscribe(data => {
-      this.intercambios = data;
-    });
+    console.log('Usuarios disponibles:', this.usuariosDisponibles);
 
 
     this.form = this.fb.group({
@@ -103,8 +104,14 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
   }
 
   getUsuariosDisponibles(): void {
-    this.intercambioService.getUsuarios().subscribe(usuarios => {
-      this.usuariosDisponibles = usuarios;
+    this.intercambioService.getUsuarios().subscribe({
+      next: (usuarios: Usuario[]) => {
+        this.usuariosDisponibles = usuarios;
+        console.log('Usuarios cargados:', usuarios);
+      },
+      error: (error) => {
+        console.error('Error al cargar usuarios', error);
+      }
     });
   }
 
@@ -120,8 +127,22 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
   }
 
   getUsuarioNombre(usuarioId: number): string {
-    const usuario = this.usuariosDisponibles.find((u) => u.id === usuarioId);
-    return usuario ? usuario.nombre : 'Desconocido';
+    // Añadir más depuración
+    if (!usuarioId) {
+      console.warn('ID de usuario no válido');
+      return 'Desconocido';
+    }
+
+    const usuario = this.usuariosDisponibles.find((u) => {
+      return Number(u.id) === Number(usuarioId);
+    });
+
+    if (!usuario) {
+      console.warn(`Usuario con ID ${usuarioId} no encontrado. Usuarios disponibles:`, this.usuariosDisponibles);
+      return 'Desconocido';
+    }
+
+    return usuario.nombre || 'Desconocido';
   }
 
 
@@ -171,8 +192,26 @@ export class CrudIntercambiosComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === "aceptar") {
-        this.intercambioService.deleteIntercambio(intercambio).subscribe(() => {
-          this.getIntercambios();
+        this.intercambioService.deleteIntercambio(intercambio).subscribe({
+          next: () => {
+            this.getIntercambios();
+            // Show success snackbar
+            this.snackBar.openFromComponent(NotificacionComponent, {
+              data: { mensaje: "El intercambio fue eliminado exitosamente" },
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+          },
+          error: (error) => {
+            // Show error snackbar if deletion fails
+            this.snackBar.openFromComponent(NotificacionComponent, {
+              data: { mensaje: "Error al eliminar el intercambio" },
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+          }
         });
       }
     });

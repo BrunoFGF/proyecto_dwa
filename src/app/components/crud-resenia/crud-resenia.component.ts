@@ -10,17 +10,16 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 @Component({
   selector: 'app-crud-resenia',
   standalone: true,
-  imports: [MatInputModule, ReactiveFormsModule,MatPaginator,MatIcon,MatTableModule],
+  imports: [MatInputModule, ReactiveFormsModule, MatPaginator, MatIcon, MatTableModule],
   templateUrl: './crud-resenia.component.html',
   styleUrl: './crud-resenia.component.css'
 })
-export class CrudReseniaComponent {
+export class CrudReseniaComponent implements OnInit {
   reseniaForm!: FormGroup;
   dataSource = new MatTableDataSource<Resenia>();
   displayedColumns: string[] = ['titulo', 'autor', 'opinion', 'comentario', 'acciones'];
   isEditMode = false;
   currentId: number | null = null;
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private fb: FormBuilder, private reseniajsonService: ReseniajsonService) {}
@@ -49,17 +48,18 @@ export class CrudReseniaComponent {
 
   guardarResenia(): void {
     if (this.reseniaForm.invalid) return;
-
+    
     const nuevaResenia: Resenia = this.reseniaForm.value;
-
-    if (this.isEditMode) {
-      nuevaResenia.id = this.currentId!;
+    
+    if (this.isEditMode && this.currentId) {
+      nuevaResenia.id = this.currentId;
       this.reseniajsonService.updateResenia(nuevaResenia).subscribe(() => {
         this.cargarResenias();
         this.cancelarEdicion();
       });
     } else {
-      nuevaResenia.id = Date.now(); // Simulamos un ID único
+      // Remove the id property when adding a new review
+      delete nuevaResenia.id;
       this.reseniajsonService.addResenia(nuevaResenia).subscribe(() => {
         this.cargarResenias();
         this.reseniaForm.reset();
@@ -74,7 +74,10 @@ export class CrudReseniaComponent {
   }
 
   eliminarResenia(id: number): void {
-    this.reseniajsonService.deleteResenia(id).subscribe(() => this.cargarResenias());
+    this.reseniajsonService.deleteResenia(id).subscribe(() => {
+      this.cargarResenias();
+      this.cancelarEdicion();
+    });
   }
 
   cancelarEdicion(): void {

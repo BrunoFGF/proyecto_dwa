@@ -340,12 +340,20 @@
       "comentario": "Una lectura intrigante que mezcla misterio y suspenso."
     },
     {
-      "id": "10",
       "titulo": "El hombre en busca de sentido",
       "autor": "Viktor Frankl",
       "imagen": "https://images.cdn1.buscalibre.com/fit-in/360x360/75/c0/75c0bd053ec1e0a6671a1d9d13892582.jpg",
+      "opinion": 9,
+      "comentario": "Una reflexión profunda sobre la vida y la búsqueda de significado.",
+      "id": "10"
+    },
+    {
+      "id": 1732538445751,
+      "titulo": "test",
+      "autor": "test",
+      "imagen": "test",
       "opinion": 10,
-      "comentario": "Una reflexión profunda sobre la vida y la búsqueda de significado."
+      "comentario": "test"
     }
   ],
   "intercambios": [
@@ -436,7 +444,7 @@
   ],
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "asd",
       "apellido": "asd",
       "email": "a@a",
@@ -449,7 +457,7 @@
       "fecha_registro": "2024-11-25T02:23:20.352Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "zxc",
       "apellido": "zxc",
       "email": "s@s",
@@ -462,7 +470,7 @@
       "fecha_registro": "2024-11-25T02:24:02.296Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "aaaa",
       "apellido": "aaaa",
       "email": "v@v",

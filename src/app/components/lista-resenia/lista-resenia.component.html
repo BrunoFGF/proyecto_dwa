@@ -1,17 +1,24 @@
-<h2>{{ title }}</h2>
-<div class="lista-resenias">
-  <mat-card *ngFor="let resenia of resenias" class="resenia-card">
-    <mat-card-header>
-      <mat-card-title>{{ resenia.titulo }}</mat-card-title>
-      <mat-card-subtitle>{{ resenia.autor }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="resenia.imagen" [alt]="resenia.titulo" />
-    <mat-card-content>
-      
-      <p><strong>Opinión:</strong> {{ resenia.opinion }}/10</p>
-      <p><strong>Comentario:</strong> {{ resenia.comentario }}</p>
-      <p>{{ resenia.comentario }}</p>
-    </mat-card-content>
-    
-  </mat-card>
+<div class="reviews-container">
+  <h2>{{ title }}</h2>
+  <div class="reviews-list">
+    <div *ngFor="let resenia of resenias" class="review-card">
+      <div class="review-image">
+        <img [src]="resenia.imagen" [alt]="resenia.titulo" />
+      </div>
+      <div class="review-content">
+        <div class="review-header">
+          <h3>{{ resenia.titulo }}</h3>
+          <span class="review-author">Por {{ resenia.autor }}</span>
+        </div>
+        <div class="review-details">
+          <div class="review-rating">
+            <mat-icon>star</mat-icon>
+            <span>{{ resenia.opinion }}/10</span>
+          </div>
+          <p class="review-comment">{{ resenia.comentario }}</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>

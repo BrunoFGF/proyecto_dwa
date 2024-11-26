@@ -1,20 +1,91 @@
-.lista-resenias {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+.reviews-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.review-card {
+  display: flex;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.review-image {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.review-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-header {
+  margin-bottom: 15px;
+}
+
+.review-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.review-author {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+
+.review-rating mat-icon {
+  margin-right: 5px;
+}
+
+.review-comment {
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .review-card {
+    flex-direction: column;
   }
   
-  .resenia-card {
-    width: 300px;
-    margin: 8px;
+  .review-image {
+    width: 100%;
+    height: 300px;
   }
-  
-  mat-card {
-    transition: box-shadow 0.3s ease;
-  }
-  
-  mat-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
+}

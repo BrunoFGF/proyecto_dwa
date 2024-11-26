@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h2>Gestión de Reseñas</h2>
+  <h2>Gestion de reseñas</h2>
 
   <!-- Formulario -->
   <form [formGroup]="reseniaForm" (ngSubmit)="guardarResenia()" class="formulario">
@@ -30,10 +30,23 @@
     </mat-form-field>
 
     <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit" 
+        [disabled]="reseniaForm.invalid"
+        class="submit-btn">
+        <mat-icon>{{ isEditMode ? 'update' : 'add' }}</mat-icon>
         {{ isEditMode ? 'Actualizar' : 'Crear' }}
       </button>
-      <button mat-button type="button" (click)="cancelarEdicion()">Cancelar</button>
+      <button 
+        mat-stroked-button 
+        type="button" 
+        (click)="cancelarEdicion()"
+        class="cancel-btn">
+        <mat-icon>cancel</mat-icon>
+        Cancelar
+      </button>
     </div>
   </form>
 
@@ -68,12 +81,22 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let resenia">
-        <button mat-icon-button color="primary" (click)="editarResenia(resenia)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="eliminarResenia(resenia.id!)">
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="action-buttons">
+          <button 
+            mat-mini-fab 
+            color="primary" 
+            (click)="editarResenia(resenia)"
+            aria-label="Editar reseña">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button 
+            mat-mini-fab 
+            color="warn" 
+            (click)="eliminarResenia(resenia.id!)"
+            aria-label="Eliminar reseña">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </td>
     </ng-container>
 

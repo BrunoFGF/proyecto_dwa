@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-lista-resenia',
   standalone: true,
-  imports: [NgFor, NgIf, MatCardModule, MatIconModule, MatButtonModule],
+  imports: [NgFor, MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './lista-resenia.component.html',
   styleUrl: './lista-resenia.component.css'
 })

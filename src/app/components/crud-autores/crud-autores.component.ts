@@ -58,7 +58,7 @@ export class CrudAutoresComponent implements OnInit, AfterViewInit {
     nombre:["", [Validators.required, Validators.pattern(/[A-Za-z0-9]+/g)]],
     nacionalidad:["",[Validators.required, Validators.pattern(/[A-Za-z0-9]+/g)]],
     fechanacimiento:["",[Validators.required]],
-    imagen:[""],
+    imagen:["",[Validators.pattern(/^(https?:\/\/)?([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}(\/[^\s]*)?\.(jpg|jpeg|png|gif)$/)]],
     biografia:["",[Validators.required]],
     generosprincipales: ["",[Validators.required]],
     activo: [false]

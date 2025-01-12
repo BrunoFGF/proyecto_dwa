@@ -7,26 +7,55 @@
     <mat-form-field>
       <mat-label>Título</mat-label>
       <input matInput formControlName="titulo" />
+      <mat-error>
+        <ng-container *ngIf="reseniaForm.get('titulo')?.invalid && (reseniaForm.get('titulo')?.dirty || reseniaForm.get('titulo')?.touched)">
+          <span *ngIf="reseniaForm.get('titulo')?.hasError('required')">El título es requerido</span>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Autor</mat-label>
       <input matInput formControlName="autor" />
+      <mat-error>
+        <ng-container *ngIf="reseniaForm.get('autor')?.invalid && (reseniaForm.get('autor')?.dirty || reseniaForm.get('autor')?.touched)">
+          <span *ngIf="reseniaForm.get('autor')?.hasError('required')">El autor es requerido</span>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>URL Imagen</mat-label>
       <input matInput formControlName="imagen" />
+      <mat-error>
+        <ng-container *ngIf="reseniaForm.get('imagen')?.invalid && (reseniaForm.get('imagen')?.dirty || reseniaForm.get('imagen')?.touched)">
+          <span *ngIf="reseniaForm.get('imagen')?.hasError('required')">La URL de la imagen es requerida</span>
+          <span *ngIf="reseniaForm.get('imagen')?.hasError('pattern')">La URL de la imagen debe ser válida</span>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Opinión</mat-label>
-      <input matInput type="number" formControlName="opinion" />
+      <input matInput type="number" formControlName="opinion" min="0" max="10"/>
+      <mat-error>
+        <ng-container *ngIf="reseniaForm.get('opinion')?.invalid && (reseniaForm.get('opinion')?.dirty || reseniaForm.get('opinion')?.touched)">
+          <span *ngIf="reseniaForm.get('opinion')?.hasError('required')">La opinión es requerida</span>
+          <span *ngIf="reseniaForm.get('opinion')?.hasError('max')">La opinión no puede ser mayor a 10</span>
+          <span *ngIf="reseniaForm.get('opinion')?.hasError('min')">La opinión no puede ser menor a 1</span>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Comentario</mat-label>
       <textarea matInput formControlName="comentario"></textarea>
+      <mat-error>
+        <ng-container *ngIf="reseniaForm.get('comentario')?.invalid && (reseniaForm.get('comentario')?.dirty || reseniaForm.get('comentario')?.touched)">
+          <span *ngIf="reseniaForm.get('comentario')?.hasError('required')">El comentario es requerido</span>
+          <span *ngIf="reseniaForm.get('comentario')?.hasError('minlength')">El comentario debe tener al menos 10 caracteres</span>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
 
     <div class="form-actions">

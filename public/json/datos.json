@@ -372,6 +372,14 @@
       "opinion": 10,
       "comentario": "Una reflexión profunda sobre la vida y la búsqueda de significado.",
       "id": "10"
+    },
+    {
+      "id": "2e84",
+      "titulo": "Harry Potter and the Cursed Child",
+      "autor": "J.K. Rowling",
+      "imagen": "https://www.mundiario.com/media/mundiario/images/2016/02/11/2016021121321420990.jpg",
+      "opinion": 8,
+      "comentario": "Excelente libro, con una literatura exquisita para los lectores que aman el genero de la fantasia "
     }
   ],
   "intercambios": [

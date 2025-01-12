@@ -50,7 +50,7 @@ export class CrudReseniaComponent implements OnInit {
     ({
       titulo: ['', Validators.required],
       autor: ['', Validators.required],
-      imagen: ['', Validators.required],
+      imagen: ['', Validators.required, [Validators.pattern(/^(https?:\/\/)?([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}(\/[^\s]*)?\.(jpg|jpeg|png|gif)$/)]],
       opinion: [0, [Validators.required, Validators.min(1), Validators.max(10)]],
       comentario: ['', Validators.required],
     });

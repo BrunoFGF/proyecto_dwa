@@ -58,7 +58,7 @@ export class CrudLibrosComponent implements OnInit, AfterViewInit{
     descripcion: ["",[Validators.required]],
     idioma: ["",[Validators.required]],
     ubicacion: ["",[Validators.required]],
-    imagen: [""],
+    imagen: ["", [Validators.pattern(/^(https?:\/\/)?([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}(\/[^\s]*)?\.(jpg|jpeg|png|gif)$/)]],
     disponibilidad: [false]
   });
   }

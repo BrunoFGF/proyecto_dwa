@@ -152,6 +152,11 @@
     <mat-form-field class="formElement">
       <mat-label>URL de la portada:</mat-label>
       <input matInput type="url" placeholder="URL" formControlName="imagen" />
+      <mat-error>
+        <ng-container *ngIf="form.get('imagen')?.invalid && (form.get('imagen')?.dirty || form.get('imagen')?.touched)">
+          <span *ngIf="form.get('imagen')?.errors?.['pattern']">La imagen debe terminar en |jpg |png |gif</span>
+        </ng-container>
+      </mat-error>
     </mat-form-field>
 
    </div>
